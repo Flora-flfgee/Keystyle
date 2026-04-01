@@ -200,7 +200,7 @@ export default function Hero() {
         />
         <div className="relative overflow-hidden group">
           <Image
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJG390yUNmggnCBgcZzpDIvwJxA5lGwsgb3aAsZc4X_rQJEuIJlJXeAuxkTvuxbjRxP3-HsQlkjn6KUK85LVXIta642HcDa6jew51OFc2IJyOwLZ3hGmj9mGuGfh0S0TcAFA1GNH1_4Ag2kBcjolte2N2CVx3L7w7ubOB9Adn4mCVZ1nKDd8C1U7h0l1ZlmpAny5Ob_QWxVlD7ErooOOhT9RR0taTeoSCjrw_PqFBmgznjP_WymmrkIaugQla8SqXYlzs8yugJ9QU"
+            src="/images/hero_bw.png"
             alt="Professional man in a bespoke tailored suit"
             width={800}
             height={1000}
