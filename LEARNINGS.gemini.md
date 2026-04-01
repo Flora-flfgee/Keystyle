@@ -20,3 +20,13 @@
   - Refactored `BlogGrid` into `DiariesSection` and `InstagramSection`, placing the new blog section above the Instagram feed.
   - Created a dedicated `/diaries` archive page with category filtering.
 - **Refine**: Verified the dynamic import logic and ensured the design system (Manrope/Inter fonts, HSL colors) is consistently applied to the new modules.
+
+## [2026-04-01] - Fix Vercel Build Failure (MDX & Files)
+- **Action**: Resolved "Module not found" and MDX parsing errors at Vercel.
+- **Reason**: Build failure caused by missing `.mdx` files in `src/content/blogs` and incomplete MDX configuration in `next.config.ts`.
+- **Act**:
+  - Identified missing files referenced by `src/data/blog-registry.ts`.
+  - Recreated the three blog post files with initial structured content based on `src/data/blog-metadata.ts`.
+  - Updated `next.config.ts` to properly wrap the configuration with `@next/mdx` for Next.js 15.3.3.
+  - Aligned git email with previous repository contributor (`monstereacom@gmail.com`).
+- **Refine**: Successfully verified local production build via `npm run build` and pushed fixes to GitHub repository.

@@ -1,6 +1,4 @@
-"use client";
-
-import dynamic from "next/dynamic";
+import { getBlogComponent } from "@/data/blog-registry";
 import { useMemo } from "react";
 
 interface BlogContentProps {
@@ -9,18 +7,16 @@ interface BlogContentProps {
 
 export default function BlogContent({ slug }: BlogContentProps) {
   const Content = useMemo(() => {
-    return dynamic(() => import(`@/content/blogs/${slug}.mdx`), {
-      loading: () => (
-        <div className="animate-pulse space-y-4 pt-12">
-          <div className="h-8 bg-white/10 w-3/4 rounded mx-auto" />
-          <div className="h-4 bg-white/10 w-full rounded" />
-          <div className="h-4 bg-white/10 w-5/6 rounded" />
-          <div className="h-4 bg-white/10 w-4/6 rounded" />
-        </div>
-      ),
-      ssr: false,
-    });
+    return getBlogComponent(slug);
   }, [slug]);
+
+  if (!Content) {
+    return (
+      <div className="text-center py-24 text-white/50 font-[family-name:var(--font-inter)]">
+        Article Not Found.
+      </div>
+    );
+  }
 
   return (
     <div className="prose prose-invert prose-gold max-w-none font-[family-name:var(--font-inter)] py-12">
