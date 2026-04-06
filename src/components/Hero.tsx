@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { Play, X } from "lucide-react";
 
 const particles = [
   { top: "10%", left: "20%", size: 4, delay: 0 },
@@ -14,6 +15,7 @@ const particles = [
 ];
 
 export default function Hero() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -38,7 +40,8 @@ export default function Hero() {
   const headingWords = "EXPERT MENSWEAR STYLING FOR HIGH-PROFILE MEN AND EXECUTIVES.".split(" ");
 
   return (
-    <section 
+    <>
+      <section 
       ref={containerRef}
       style={{ position: "relative" }}
       className="relative min-h-screen bg-[#0a0c0b] pt-32 pb-24 px-8 md:px-20 flex flex-col md:flex-row items-center gap-16 overflow-hidden"
@@ -207,14 +210,82 @@ export default function Hero() {
             className="w-full grayscale contrast-125 brightness-90 shadow-2xl border border-white/5 transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
             priority
           />
-          <motion.div 
-            className="absolute inset-0 bg-gradient-to-t from-[#0a0c0b] via-transparent to-transparent opacity-60"
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-t from-[#0a0c0b] via-transparent to-transparent opacity-60"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.6 }}
+              transition={{ duration: 1, delay: 1 }}
+            />
+            {/* Play Button Overlay */}
+            <motion.div 
+              className="absolute inset-0 flex items-center justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2 }}
+            >
+              <motion.button
+                onClick={() => setIsVideoOpen(true)}
+                className="group/play flex flex-col items-center gap-4 focus:outline-none"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="w-20 h-20 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center relative overflow-hidden transition-all duration-500 group-hover/play:border-[#E5C374]/50 group-hover/play:bg-[#E5C374]/10">
+                   <Play className="w-8 h-8 text-[#E5C374] fill-[#E5C374]/20 absolute z-10 transition-transform duration-500 group-hover/play:scale-110" />
+                   {/* Pulse Effect */}
+                   <motion.div 
+                     className="absolute inset-0 border-2 border-[#E5C374] rounded-full"
+                     animate={{ scale: [1, 1.5, 1], opacity: [0, 0.3, 0] }}
+                     transition={{ duration: 2, repeat: Infinity }}
+                   />
+                </div>
+                <span className="text-white/70 text-[10px] uppercase tracking-[0.4em] font-medium transition-colors duration-500 group-hover/play:text-[#E5C374]">Play Film</span>
+              </motion.button>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {isVideoOpen && (
+          <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.6 }}
-            transition={{ duration: 1, delay: 1 }}
-          />
-        </div>
-      </motion.div>
-    </section>
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0a0c0b]/95 backdrop-blur-xl p-4 md:p-10"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="relative w-full max-w-6xl aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(4,47,46,0.3)] bg-black"
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setIsVideoOpen(false)}
+                className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-black/50 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors text-white group"
+              >
+                <X className="w-6 h-6 transition-transform group-hover:rotate-90" />
+              </button>
+
+              {/* Video Player */}
+              <video 
+                src="/video/Ping_Bw.mp4"
+                className="w-full h-full object-contain"
+                autoPlay
+                controls
+                playsInline
+              />
+            </motion.div>
+
+            {/* Background Branding Elements */}
+            <div className="absolute top-10 left-10 opacity-20 pointer-events-none">
+              <span className="text-4xl font-black text-[#E5C374] italic tracking-tighter">KEYSTYLE</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
