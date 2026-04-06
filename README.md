@@ -1,6 +1,6 @@
-# Keystyle Web Site
+# Keystyle Sartorial Web Site
 
-A premium, modern web showcase built for **Keystore**, featuring advanced UI components, smooth animations, and a responsive experience.
+A premium, modern web showcase built for **Keystyle Sartorial**, featuring elite image consulting and niche makeovers for the Modern Gentleman.
 
 ## ✨ Tech Stack
 
@@ -41,4 +41,4 @@ A premium, modern web showcase built for **Keystore**, featuring advanced UI com
 Find detailed requirements, architecture designs, and maintenance logs in the `/docs` directory.
 
 ---
-Built with pride for floraleong2025.
+Built with pride for **Keystyle Sartorial**.

@@ -1,7 +1,7 @@
-# GEMINI.md - Keystyle Project
+# GEMINI.md - Keystyle Sartorial Project
 
 ## Purpose
-This project is the official website for **Keystore**, a platform likely focused on design, professional services, or a creative showcase. It's built with modern web technologies for a premium, performant, and responsive user experience.
+This project is the official digital presence for **Keystyle Sartorial**, an elite image consultancy by Flora Leong. It niches in premium makeovers and "Intelligent Styling" for middle-aged men, boardroom leaders, and high-profile executives.
 
 ## Architecture
 - **Framework**: [Next.js](https://nextjs.org/) (App Router)

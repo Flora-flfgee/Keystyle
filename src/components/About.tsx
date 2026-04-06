@@ -21,7 +21,7 @@ export default function About() {
           </h2>
           <div className="space-y-6 text-on-surface-variant text-lg leading-relaxed font-[family-name:var(--font-inter)]">
             <p>
-              Intelligent styling is the intersection of psychology, color
+              Founded by <span className="text-white font-semibold">Flora Leong</span>, Keystyle Sartorial brings a unique, multi-disciplinary precision to image strategy. Intelligent styling is the intersection of psychology, color
               theory, and bespoke craftsmanship. We don&apos;t follow trends; we
               observe the architecture of the individual.
             </p>
