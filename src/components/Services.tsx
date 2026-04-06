@@ -6,7 +6,7 @@ const services = [
     title: "Personal Styling",
     description:
       "A deep dive into your personal brand. We curate looks that command respect and radiate confidence.",
-    image: "/images/services/personal_styling.png",
+    image: "/images/services/personal_styling_v2.png",
     offset: false,
   },
   {
@@ -14,7 +14,7 @@ const services = [
     title: "Wardrobe Edit",
     description:
       "Systematic reorganization and pruning of your current collection. Retaining only what adds value.",
-    image: "/images/services/wardrobe_edit.png",
+    image: "/images/services/wardrobe_edit_v2.png",
     offset: true,
   },
   {
@@ -22,7 +22,7 @@ const services = [
     title: "Gift Vouchers",
     description:
       "The gift of transformation. Provide the men in your life with a bespoke styling experience.",
-    image: "/images/services/gift_vouchers.png",
+    image: "/images/services/gift_vouchers_v2.png",
     offset: false,
   },
   {
@@ -30,7 +30,7 @@ const services = [
     title: "Corporate Workshops",
     description:
       "Elevating executive presence across your leadership team through visual communication.",
-    image: "/images/services/corporate_workshops.png",
+    image: "/images/services/corporate_workshops_v2.png",
     offset: true,
   },
 ];
