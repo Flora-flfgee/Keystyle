@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const services = [
   {
+    slug: "personal-styling",
     label: "CONSULTANCY",
     title: "Personal Styling",
     description:
@@ -10,6 +12,7 @@ const services = [
     offset: false,
   },
   {
+    slug: "wardrobe-edit",
     label: "REFINEMENT",
     title: "Wardrobe Edit",
     description:
@@ -18,6 +21,7 @@ const services = [
     offset: true,
   },
   {
+    slug: "gift-vouchers",
     label: "CURATED GIFTS",
     title: "Gift Vouchers",
     description:
@@ -26,6 +30,7 @@ const services = [
     offset: false,
   },
   {
+    slug: "corporate-workshops",
     label: "ENTERPRISE",
     title: "Corporate Workshops",
     description:
@@ -57,19 +62,22 @@ export default function Services() {
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
               </div>
-              <div className="p-8">
+              <div className="p-8 pb-12">
                 <span className="text-[#E5C374] font-[family-name:var(--font-inter)] uppercase tracking-widest text-[10px] block mb-2 font-bold">
                   {svc.label}
                 </span>
                 <h3 className="text-xl font-[family-name:var(--font-manrope)] font-bold text-white mb-4 uppercase tracking-wider">
                   {svc.title}
                 </h3>
-                <p className="text-on-surface-variant text-sm mb-8 leading-relaxed font-[family-name:var(--font-inter)]">
+                <p className="text-on-surface-variant text-sm mb-12 leading-relaxed font-[family-name:var(--font-inter)]">
                   {svc.description}
                 </p>
-                <button className="text-[#E5C374] border border-[#E5C374]/40 px-6 py-2 text-[10px] font-[family-name:var(--font-manrope)] font-bold uppercase tracking-widest hover:bg-[#E5C374] hover:text-[#141313] transition-all">
+                <Link 
+                  href={`/services/${svc.slug}`}
+                  className="text-[#E5C374] border border-[#E5C374]/40 px-6 py-2 text-[10px] font-[family-name:var(--font-manrope)] font-bold uppercase tracking-widest hover:bg-[#E5C374] hover:text-[#141313] transition-all inline-block"
+                >
                   Learn More
-                </button>
+                </Link>
               </div>
             </div>
           ))}

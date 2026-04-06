@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "COLLECTIONS", href: "#services", active: true },
@@ -14,8 +15,17 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 max-w-full bg-[#0a0c0b]/90 backdrop-blur-md border-b border-[#064e3b]/30">
-      <div className="text-2xl font-bold tracking-[0.15em] text-[#E5C374] font-[family-name:var(--font-manrope)]">
-        KEYSTYLE
+      <div className="flex items-center gap-0">
+        <Image 
+          src="/logo/logo.png" 
+          alt="Keystyle Logo" 
+          width={64} 
+          height={64} 
+          className="w-16 h-16 object-contain"
+        />
+        <span className="text-xl font-bold tracking-[0.25em] text-[#E5C374] font-[family-name:var(--font-manrope)] block mt-2 uppercase -ml-2.5">
+          EYSTYLE
+        </span>
       </div>
 
       {/* Desktop Nav */}
@@ -24,11 +34,10 @@ export default function Navbar() {
           <a
             key={link.label}
             href={link.href}
-            className={`font-[family-name:var(--font-manrope)] uppercase tracking-[0.1em] text-sm transition-colors duration-300 ${
-              link.active
+            className={`font-[family-name:var(--font-manrope)] uppercase tracking-[0.1em] text-sm transition-colors duration-300 ${link.active
                 ? "text-[#E5C374] font-semibold border-b border-[#E5C374] pb-1"
                 : "text-white/80 hover:text-[#E5C374]"
-            }`}
+              }`}
           >
             {link.label}
           </a>

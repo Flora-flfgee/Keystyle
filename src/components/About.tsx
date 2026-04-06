@@ -7,11 +7,12 @@ export default function About() {
         <div className="flex-1 w-full relative">
           <div className="absolute -inset-10 border border-[#064e3b]/20 -z-0" />
           <Image
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu3XnIu8kZnm313LNAhq3bcANsmtjmJMpqUmE0ixljRWqXdPYfxG4GZG8ULv5DTXSD9A_9XEnLTTiK5ALhiiO2cf-96E_-KFBYserFNlqnETM2J3DNSM7wTCF6O_tY3wBiN5zJBFFb52_VbMLKDRbqg9EozwXqxkhMDf9wpOeBn54t5yNkZt1B8jog2ouZ3o4KHfJnnx4MHKgu_r8WpCSZq8ggHqvsGIGlcoyHk42407rSHyZ60nJwN31BR39mRkAtEOadVUpyoRA"
-            alt="Tailoring details"
+            src="/images/flora.jpeg"
+            alt="Flora Leong - Intelligent Styling"
             width={800}
-            height={600}
-            className="w-full grayscale brightness-75 relative z-10 border border-[#064e3b]/30"
+            height={1000}
+            className="w-full contrast-[1.1] brightness-90 relative z-10 border border-[#064e3b]/30 shadow-2xl"
+            priority
           />
         </div>
         <div className="flex-1">

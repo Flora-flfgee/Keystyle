@@ -6,11 +6,11 @@ import Link from "next/link";
 import { BLOG_METADATA } from "@/data/blog-metadata";
 import BlogModal from "./BlogModal";
 
-export default function DiariesSection() {
+export default function Journal() {
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const posts = BLOG_METADATA.slice(0, 3); // Showing 3 posts on home as requested
+  const posts = BLOG_METADATA.slice(0, 3); // Showing 3 posts as requested
 
   const openPost = (slug: string) => {
     setSelectedSlug(slug);
@@ -18,22 +18,22 @@ export default function DiariesSection() {
   };
 
   return (
-    <section id="diaries" className="bg-[#050706] py-32 px-8">
+    <section id="blog" className="bg-[#050706] py-32 px-8">
       <div className="max-w-screen-2xl mx-auto">
         <div className="flex justify-between items-end mb-16 border-b border-[#064e3b]/30 pb-12">
           <div className="space-y-4">
             <span className="text-[#E5C374] font-[family-name:var(--font-inter)] font-black uppercase tracking-[0.4em] text-xs">
-              THE JOURNAL
+              THE SARTORIAL
             </span>
             <h2 className="text-white font-[family-name:var(--font-manrope)] font-black tracking-widest text-4xl md:text-5xl uppercase">
-              DIARIES
+              JOURNAL
             </h2>
           </div>
           <Link
-            href="/diaries" 
+            href="/journal" 
             className="text-[#E5C374]/60 font-[family-name:var(--font-inter)] uppercase tracking-widest text-[11px] hover:text-[#E5C374] transition-all border-b border-[#E5C374]/30 pb-2 flex items-center gap-2 group"
           >
-            VIEW ALL <span className="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            VIEW ALL ARTICLES <span className="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
           </Link>
         </div>
 
@@ -49,6 +49,7 @@ export default function DiariesSection() {
                   src={post.image}
                   alt={post.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover grayscale transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-[#050706]/20 group-hover:bg-transparent transition-colors duration-500" />

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const socialLinks = [
   { label: "INSTAGRAM", href: "#" },
   { label: "LINKEDIN", href: "#" },
@@ -9,8 +11,17 @@ export default function Footer() {
   return (
     <footer className="bg-[#050706] py-24 px-8 md:px-12 w-full flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 relative border-t border-[#064e3b]/30">
       <div className="flex flex-col items-center md:items-start">
-        <div className="text-[#E5C374] font-black tracking-tighter text-3xl mb-4 font-[family-name:var(--font-manrope)] uppercase">
-          KEYSTYLE SARTORIAL
+        <div className="flex items-center gap-0 mb-4">
+          <Image 
+            src="/logo/logo.png" 
+            alt="Keystyle Logo" 
+            width={64} 
+            height={64} 
+            className="w-16 h-16 object-contain"
+          />
+          <div className="text-[#E5C374] font-black tracking-tighter text-3xl font-[family-name:var(--font-manrope)] uppercase mt-2 -ml-1">
+            EYSTYLE
+          </div>
         </div>
         <p className="text-gray-500 font-[family-name:var(--font-inter)] text-[10px] tracking-widest uppercase">
           &copy; {new Date().getFullYear()} KEYSTYLE SARTORIAL. ALL RIGHTS

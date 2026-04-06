@@ -8,7 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogModal from "@/components/BlogModal";
 
-export default function DiariesPage() {
+export default function JournalPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,10 +36,10 @@ export default function DiariesPage() {
           {/* Header */}
           <div className="text-center mb-24 space-y-6">
             <span className="text-[#E5C374] font-[family-name:var(--font-inter)] font-black uppercase tracking-[0.6em] text-xs">
-              THE COMPLETE JOURNAL
+              THE COMPLETE SARTORIAL
             </span>
             <h1 className="text-white font-[family-name:var(--font-manrope)] font-black tracking-widest text-6xl md:text-8xl uppercase">
-              DIARIES
+              JOURNAL
             </h1>
             <p className="text-white/40 max-w-2xl mx-auto font-[family-name:var(--font-inter)] text-sm leading-relaxed tracking-wider">
               An archive of sartorial insights, lifestyle guides, and the philosophy behind Keystyle's approach to modern masculinity.
@@ -77,6 +77,7 @@ export default function DiariesPage() {
                     src={post.image}
                     alt={post.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050706]/80 to-transparent group-hover:from-transparent transition-all duration-500" />

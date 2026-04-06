@@ -5,21 +5,21 @@ import { useState } from "react";
 const testimonials = [
   {
     quote:
-      "KeyStyle completely transformed how I present myself in the boardroom. The confidence shift is palpable. It's not just about clothes, it's about authority.",
-    name: "DAVID CHANDLER",
-    role: "CEO, VANGUARD TECH",
+      "Keystyle completely transformed how I present myself in the boardroom. The confidence shift is palpable. It's not just about clothes, it's about authority.",
+    name: "VINCENT LEONG",
+    role: "CEO, NEXUS TECHNOLOGY",
   },
   {
     quote:
-      "Working with KeyStyle was a revelation. Every piece in my wardrobe now serves a purpose. The ROI on personal presence is immeasurable.",
-    name: "MARCUS WONG",
-    role: "MANAGING DIRECTOR, APEX CAPITAL",
+      "Working with Keystyle was a revelation. Every piece in my wardrobe now serves a purpose. The ROI on personal presence is immeasurable.",
+    name: "ADRIAN TAN",
+    role: "MANAGING DIRECTOR, GLOBAL VENTURES",
   },
   {
     quote:
-      "The wardrobe edit alone saved me hours each week. KeyStyle understands what executives need - efficiency with impact.",
-    name: "JAMES PATEL",
-    role: "VP OPERATIONS, MERIDIAN GROUP",
+      "The wardrobe edit alone saved me hours each week. Keystyle understands what executives need - efficiency with impact.",
+    name: "JASON CHENG",
+    role: "PARTNER, STRATEGY BRIDGE",
   },
 ];
 

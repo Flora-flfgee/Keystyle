@@ -2,8 +2,21 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Play, X } from "lucide-react";
+
+const portraitVideos = [
+  {
+    video: "/video/Ping_Bw.mp4",
+    image: "/images/hero_bw.png",
+    alt: "Professional man in a bespoke tailored suit"
+  },
+  {
+    video: "/video/eric.mp4",
+    image: "/images/eric_hero.png",
+    alt: "Executive style transformation"
+  }
+];
 
 const particles = [
   { top: "10%", left: "20%", size: 4, delay: 0 },
@@ -16,7 +29,33 @@ const particles = [
 
 export default function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [portraitIndex, setPortraitIndex] = useState(0);
   const containerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Randomize portrait video on mount
+    const randomIdx = Math.floor(Math.random() * portraitVideos.length);
+    setPortraitIndex(randomIdx);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsVideoOpen(false);
+      }
+    };
+
+    if (isVideoOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      window.removeEventListener("keydown", handleKeyDown);
+    }
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isVideoOpen]);
+
+  const currentPortrait = portraitVideos[portraitIndex];
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -218,8 +257,8 @@ export default function Hero() {
           />
           <div className="relative overflow-hidden group">
             <Image
-              src="/images/hero_bw.png"
-              alt="Professional man in a bespoke tailored suit"
+              src={currentPortrait.image}
+              alt={currentPortrait.alt}
               width={800}
               height={1000}
               className="w-full grayscale contrast-125 brightness-90 shadow-2xl border border-white/5 transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
@@ -286,7 +325,7 @@ export default function Hero() {
 
               {/* Video Player */}
               <video
-                src="/video/Ping_Bw.mp4"
+                src={currentPortrait.video}
                 className="w-full h-full object-contain"
                 autoPlay
                 controls

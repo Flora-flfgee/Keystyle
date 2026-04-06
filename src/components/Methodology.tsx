@@ -61,15 +61,15 @@ export default function Methodology() {
               className="group"
             >
               <div className="flex items-center gap-6 mb-6">
-                <span className="text-3xl md:text-4xl font-black text-[#064e3b]/20 transition-colors group-hover:text-[#E5C374]/20 italic">
+                <span className="text-4xl md:text-5xl font-black text-[#FFDF99]/40 transition-all duration-500 group-hover:text-[#FFDF99] italic leading-none group-hover:scale-110">
                   {m.w}
                 </span>
-                <div className="h-[1px] flex-grow bg-[#064e3b]/20" />
+                <div className="h-[1px] flex-grow bg-[#FFDF99]/20 group-hover:bg-[#FFDF99]/50 transition-colors" />
               </div>
-              <h3 className="text-white font-[family-name:var(--font-manrope)] font-bold text-sm tracking-[0.2em] mb-4 uppercase group-hover:text-[#E5C374] transition-colors">
+              <h3 className="text-white font-[family-name:var(--font-manrope)] font-bold text-sm tracking-[0.2em] mb-4 uppercase group-hover:text-[#FFDF99] transition-all">
                 {m.title}
               </h3>
-              <p className="text-gray-500 text-xs leading-relaxed font-[family-name:var(--font-inter)] pr-4">
+              <p className="text-gray-300 text-sm leading-relaxed font-[family-name:var(--font-inter)] pr-4 opacity-80 group-hover:opacity-100 transition-opacity">
                 {m.description}
               </p>
             </motion.div>
