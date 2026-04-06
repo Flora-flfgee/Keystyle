@@ -6,8 +6,7 @@ const services = [
     title: "Personal Styling",
     description:
       "A deep dive into your personal brand. We curate looks that command respect and radiate confidence.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuArNJFlP6ytOgvxIzZNihGJuaMgHj_pyTXs44IL2d9h37OSsEnYUnkPqKzgtISWRyw0KbYtswxelN3lFffU9R8njapj6tyDrbwIBVGp_0wfdMsag0tLeeVHKle6XgSwXU2G4rDyb3liiQvZLfbtOA8lVFlj9NhU1ygD8tmt7-ML46w5WLpryYmvhS2nBkGGIzP8Ze8Ybxqppnw0wW2yahvMS7ajDehl3We1x44M4YRwbd9dmxJdH-4kfUqcq0AkXDWmNVmuofB5KDg",
+    image: "/images/services/personal_styling.png",
     offset: false,
   },
   {
@@ -15,8 +14,7 @@ const services = [
     title: "Wardrobe Edit",
     description:
       "Systematic reorganization and pruning of your current collection. Retaining only what adds value.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCf01T9ETP0pSwBDkCxbYBWMlDpj0EalVG0EuxVcxZmunvWClyOXFvdVeY1Hg8gA4N51FNtEoxhiujyDbYPvnjvNEuc5xpNU5Zo9wxLTSxhqHnNGbE7Itp0sz7bdJzuTfPgSU53efCAfOs2-JS0S9AVgMskayZNKSZOiXBIoXR9kpJfH_qVrzgEMFvU2p-jgiMVPc9McgmZbswWuAL72JEGC97y2pfzKYwiZY7hZfW_055oZRtX-5I0Ya4pVpzAHrQnXfUdlW64-tY",
+    image: "/images/services/wardrobe_edit.png",
     offset: true,
   },
   {
@@ -24,8 +22,7 @@ const services = [
     title: "Gift Vouchers",
     description:
       "The gift of transformation. Provide the men in your life with a bespoke styling experience.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA6F5X0P48ma8L82cwKMgYzUDzxTOACliNXKghxekjS4iEt2PyFROVFrHZGE12C0_DJJsN6BMzhZrH8rOvQehGLiqYuG-zcemE-nodxWxaWSXkltnX5APATutMFkva-2UXg-orG_ipVEwRtywPkX95GtqfVX7pG68C9N8293THBuawiR-71p2vwSqCuZHKKfsvfu5Jn0Q1Q98bXVc49IiLJCCm3iUBzqqdc60Pa8T7GpWuA15DRi_ZsX9gWbWfHYe0uV1wuYyujYOI",
+    image: "/images/services/gift_vouchers.png",
     offset: false,
   },
   {
@@ -33,8 +30,7 @@ const services = [
     title: "Corporate Workshops",
     description:
       "Elevating executive presence across your leadership team through visual communication.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAhz6H4SWXT7_V3EhzJzeD0d7HcXH16MnQOAUUkDl5DTX1_CBe7Mxqu1h0hqUvsVW8XQsrsyjrHjxSoBu2PPUJWPIuA5n-Dhf3lhkWafcdxCE4EJd19mTwyHOI9-jld86H7Kxwi9QnKSzYzOieGrv6Hdth-ak1y1jsoGR08s2pNbV_EwzEnVxN966ZTtWjikV3Y65LsAZ3QGyojSRx4nhRCXdH0uE_gFMFP9I3R23MJSbVmqStv8X4ZtZWT5fadzm2Hzj8aqOIDb2s",
+    image: "/images/services/corporate_workshops.png",
     offset: true,
   },
 ];
