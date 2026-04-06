@@ -30,3 +30,15 @@
   - Updated `next.config.ts` to properly wrap the configuration with `@next/mdx` for Next.js 15.3.3.
   - Aligned git email with previous repository contributor (`monstereacom@gmail.com`).
 - **Refine**: Successfully verified local production build via `npm run build` and pushed fixes to GitHub repository.
+
+## [2026-04-06] - Fix Missing Hero Assets
+- **Action**: Resolved 404 error for `/images/hero_bw.png` on the live site `https://www.keystyle.sg/`.
+- **Reason**: The `public/` directory containing image and video assets was untracked locally and therefore missing on the GitHub repository and Vercel build.
+- **Act**:
+  - Confirmed 404 for `/images/hero_bw.png` via web fetch on the live domain.
+  - Renamed `Ping Bw.mp4` to `Ping_Bw.mp4` to avoid URL encoding issues with spaces in filenames.
+  - Updated `src/components/Hero.tsx` to reference the renamed video file.
+  - Staged and committed the entire `public/` folder and updated components.
+  - Successfully pushed changes to GitHub (resolved a 400 RPC error by increasing `http.postBuffer` for large video assets).
+- **Refine**: Verified the push was successful; confirmed Vercel will rebuild with all assets including the hero image.
+
