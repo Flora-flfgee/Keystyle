@@ -46,17 +46,32 @@ export default function Hero() {
       style={{ position: "relative" }}
       className="relative min-h-screen bg-[#0a0c0b] pt-32 pb-24 px-8 md:px-20 flex flex-col md:flex-row items-center gap-16 overflow-hidden"
     >
-      {/* Background Animation */}
+      {/* Background Video and Filter Layer */}
       <motion.div style={{ opacity }} className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-[#042f2e] opacity-20" />
-        <div className="emerald-gradient-overlay absolute inset-0" />
+        {/* The deepest layer: Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero_video/herovideo.mp4" type="video/mp4" />
+        </video>
+        
+        {/* The Filter Shade Overlay */}
+        <div className="absolute inset-0 bg-black/70 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#0a0c0b]" />
+        <div className="emerald-gradient-overlay absolute inset-0 opacity-40" />
+
+        {/* Subtle Particles on top of video */}
         {particles.map((p, i) => (
           <motion.div
             key={i}
             className="particle"
             initial={{ opacity: 0 }}
             animate={{ 
-              opacity: [0.2, 0.5, 0.2],
+              opacity: [0.1, 0.3, 0.1],
               y: [0, -20, 0],
               x: [0, 10, 0]
             }}
