@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Elemental Edge™ — Results Presentation | Keystyle</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--em:#2D6A4F;--mint:#52B788;--rg:#C9956C;--blush:#E8A598;--cream:#FAF7F2;--ch:#2B2B2B;--gr:#6B6B6B;--lg:#E8E4DE}
+body{font-family:Inter,sans-serif;background:#1a1a1a;color:var(--ch);padding:30px 20px;display:flex;flex-direction:column;align-items:center;gap:30px}
+.slide-label{font-size:10px;color:#888;letter-spacing:3px;text-transform:uppercase;font-weight:600;text-align:center;margin-bottom:4px}
+
+/* Slide base - 16:9 */
+.slide{width:960px;height:540px;background:white;box-shadow:0 20px 60px rgba(0,0,0,.3);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.slide::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--em),var(--mint),var(--rg))}
+
+/* Layouts */
+.slide-center{justify-content:center;align-items:center;text-align:center;padding:60px 80px}
+.slide-split{flex-direction:row}
+.slide-content{padding:50px 60px;flex:1;display:flex;flex-direction:column;justify-content:center}
+
+/* Title slide */
+.title-slide{background:linear-gradient(135deg,#1B4332,var(--em),#2D6A4F);color:white}
+.title-slide::before{background:linear-gradient(90deg,var(--rg),var(--blush),var(--rg))}
+.title-slide .brand-bar{position:absolute;top:30px;left:50px;display:flex;align-items:center;gap:10px}
+.title-slide .brand-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+.title-slide .brand-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.title-slide h1{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:700;line-height:1.1;margin-bottom:16px;letter-spacing:2px}
+.title-slide h1 span{color:var(--rg)}
+.title-slide .subtitle{font-size:16px;color:rgba(255,255,255,.7);letter-spacing:2px;text-transform:uppercase;font-weight:300}
+.title-slide .tagline{position:absolute;bottom:40px;right:50px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--rg)}
+.title-slide .decorative{position:absolute;bottom:-60px;right:-40px;width:250px;height:250px;border:2px solid rgba(255,255,255,.06);border-radius:50%}
+.title-slide .decorative2{position:absolute;bottom:-30px;right:-10px;width:180px;height:180px;border:2px solid rgba(255,255,255,.04);border-radius:50%}
+
+/* Agenda / section slides */
+.dark-slide{background:var(--ch);color:white}
+.dark-slide h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;margin-bottom:20px;color:white}
+.dark-slide h2 span{color:var(--mint)}
+.dark-slide .items{list-style:none;margin-top:20px}
+.dark-slide .items li{font-size:16px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.7);display:flex;align-items:center;gap:12px}
+.dark-slide .items li .num{background:var(--em);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0}
+
+/* Standard content slide */
+.content-slide h2{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--ch);margin-bottom:6px;line-height:1.2}
+.content-slide .section-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rg);font-weight:600;margin-bottom:8px}
+.content-slide h2 span{color:var(--em)}
+.content-slide p{font-size:14px;line-height:1.8;color:var(--gr)}
+.content-slide .highlight{background:linear-gradient(135deg,#f0fbf4,var(--cream));border-left:3px solid var(--em);padding:14px 18px;border-radius:0 6px 6px 0;margin-top:16px}
+.content-slide .highlight p{font-size:13px;color:var(--ch);line-height:1.7}
+
+/* Element cards */
+.element-row{display:flex;gap:12px;margin-top:20px}
+.element-card{flex:1;background:var(--cream);border-radius:8px;padding:14px;text-align:center;border:1px solid var(--lg)}
+.element-card .icon{font-size:28px;margin-bottom:6px}
+.element-card .name{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--ch)}
+.element-card .archetype{font-size:9px;color:var(--rg);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.element-card .traits{font-size:9px;color:var(--gr);margin-top:6px;line-height:1.5}
+.element-card.active{background:var(--em);border-color:var(--em)}
+.element-card.active .name{color:white}
+.element-card.active .archetype{color:var(--mint)}
+.element-card.active .traits{color:rgba(255,255,255,.7)}
+
+/* Reveal slide */
+.reveal-slide{background:linear-gradient(135deg,var(--em),#1B4332);color:white;justify-content:center;align-items:center;text-align:center}
+.reveal-slide .pre{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--mint);margin-bottom:10px}
+.reveal-slide h1{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:700;margin-bottom:12px}
+.reveal-slide .archetype-name{font-size:20px;color:var(--rg);letter-spacing:3px;text-transform:uppercase;font-weight:300}
+.reveal-slide .icon-large{font-size:64px;margin-bottom:16px}
+
+/* Side panel */
+.side-panel{width:320px;background:var(--em);padding:50px 30px;display:flex;flex-direction:column;justify-content:center;color:white;flex-shrink:0}
+.side-panel h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;margin-bottom:12px;line-height:1.2}
+.side-panel .tag{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--mint);margin-bottom:6px}
+.side-panel p{font-size:12px;line-height:1.7;color:rgba(255,255,255,.7)}
+.side-panel ul{list-style:none;margin-top:14px}
+.side-panel ul li{font-size:11px;padding:6px 0;color:rgba(255,255,255,.8);display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.side-panel ul li::before{content:'◆';color:var(--mint);font-size:7px;margin-top:3px}
+
+/* Quick wins */
+.wins-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:20px}
+.win-card{background:var(--cream);border-radius:8px;padding:16px;text-align:center;border:1px solid var(--lg)}
+.win-card .num{background:var(--em);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin:0 auto 8px}
+.win-card h4{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--ch);margin-bottom:4px}
+.win-card p{font-size:10px;color:var(--gr);line-height:1.5}
+
+/* CTA / Upsell */
+.cta-slide{background:linear-gradient(160deg,var(--cream),white)}
+.cta-slide .packages{display:flex;gap:12px;margin-top:20px}
+.cta-pkg{flex:1;border:1.5px solid var(--lg);border-radius:8px;padding:16px;text-align:center;background:white}
+.cta-pkg.featured{border-color:var(--rg);background:linear-gradient(160deg,#fff7f4,white);box-shadow:0 4px 20px rgba(201,149,108,.15)}
+.cta-pkg .tier{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--rg);font-weight:600}
+.cta-pkg .name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--ch);margin:4px 0}
+.cta-pkg .price{font-size:16px;font-weight:600;color:var(--em);margin-bottom:6px}
+.cta-pkg .desc{font-size:9px;color:var(--gr);line-height:1.5}
+.cta-pkg .badge{background:var(--rg);color:white;font-size:7px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:10px;display:inline-block;margin-top:6px}
+
+/* Closing slide */
+.closing-slide{background:linear-gradient(135deg,#1B4332,var(--em));color:white;justify-content:center;align-items:center;text-align:center}
+.closing-slide h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;margin-bottom:12px;line-height:1.2}
+.closing-slide h2 span{color:var(--rg)}
+.closing-slide p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.8;max-width:500px}
+.closing-slide .contact{margin-top:24px;font-size:12px;color:var(--mint);letter-spacing:1px}
+
+/* Bottom bar */
+.bottom-bar{position:absolute;bottom:0;left:0;right:0;height:28px;background:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-size:8px;color:var(--gr)}
+.bottom-bar .brand-sm{font-family:'Cormorant Garamond',serif;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ch);font-size:10px}
+.bottom-bar .brand-sm span{color:var(--em)}
+
+/* Comparison table */
+.comparison{width:100%;border-collapse:collapse;margin-top:16px}
+.comparison th{background:var(--em);color:white;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 12px;text-align:left;font-weight:600}
+.comparison td{padding:8px 12px;border-bottom:1px solid var(--lg);font-size:10.5px;color:var(--ch);line-height:1.4}
+.comparison tr:nth-child(even){background:var(--cream)}
+
+/* Style elements grid */
+.style-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.style-item{background:var(--cream);border-radius:6px;padding:12px;display:flex;align-items:flex-start;gap:8px}
+.style-item .icon{font-size:20px;flex-shrink:0}
+.style-item h4{font-size:11px;font-weight:600;color:var(--em);margin-bottom:3px}
+.style-item p{font-size:10px;color:var(--gr);line-height:1.4}
+
+@media print{
+  body{padding:0;background:white;gap:0}
+  .slide{box-shadow:none;page-break-after:always}
+  .slide-label{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== SLIDE 1: TITLE ==================== -->
+<div class="slide-label">Slide 1 — Title</div>
+<div class="slide slide-center title-slide">
+  <div class="brand-bar">
+    <div class="brand-icon">🗝</div>
+    <div class="brand-name">Keystyle</div>
+  </div>
+  <h1>Elemental<br><span>Edge</span>™</h1>
+  <div class="subtitle">Your Personal Style Element Discovery</div>
+  <div class="tagline">Level Up Your Look. Level Up Your Life.</div>
+  <div class="decorative"></div>
+  <div class="decorative2"></div>
+</div>
+
+<!-- ==================== SLIDE 2: WELCOME ==================== -->
+<div class="slide-label">Slide 2 — Welcome & Client Name</div>
+<div class="slide slide-split">
+  <div class="slide-content content-slide">
+    <div class="section-tag">Welcome</div>
+    <h2>Welcome, <span>[Client Name]</span></h2>
+    <p style="margin-top:12px">Today we'll decode your personal style DNA using the five elemental archetypes — a system rooted in ancient wisdom and adapted for the modern gentleman.</p>
+    <p style="margin-top:10px">In the next 45 minutes, you'll discover:</p>
+    <div class="highlight">
+      <p>✦ Your <strong>primary element</strong> — the energy you naturally embody<br>
+      ✦ How to <strong>dress with intention</strong> to amplify your goals<br>
+      ✦ <strong>3 quick wins</strong> you can implement immediately<br>
+      ✦ Whether your wardrobe is <strong>working for or against you</strong></p>
+    </div>
+  </div>
+  <div class="side-panel">
+    <div class="tag">Today's Session</div>
+    <h3>Elemental Edge™<br>Style Snapshot</h3>
+    <p>Duration: 45 minutes<br>Format: 1-on-1 Consultation</p>
+    <ul>
+      <li>Review your assessment results</li>
+      <li>Identify your primary element</li>
+      <li>Match intention to style</li>
+      <li>Quick wardrobe wins</li>
+      <li>Next steps discussion</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 3: WHAT IS THIS? ==================== -->
+<div class="slide-label">Slide 3 — What Is Elemental Edge?</div>
+<div class="slide slide-content content-slide" style="padding:50px 60px">
+  <div class="section-tag">The Philosophy</div>
+  <h2>What Is <span>Elemental Edge</span>™?</h2>
+  <p style="margin-top:10px">Most style advice stops at colour and silhouette. Elemental Edge goes deeper — to the <strong>energy</strong> behind what you wear.</p>
+  <p style="margin-top:8px">Based on the five natural elements — Water, Wood, Fire, Earth, and Metal — each person has a dominant style energy that shapes how they feel, show up, and are perceived.</p>
+  <div class="highlight">
+    <p><strong>The key insight:</strong> When your wardrobe aligns with your elemental energy AND your current life intentions, you don't just <em>look</em> better — you <em>attract</em> better opportunities, connections, and outcomes.</p>
+  </div>
+  <p style="margin-top:12px;font-style:italic;color:var(--rg);font-size:12px">"Clothing is your most intimate environment. It has the power to reflect, affect, and amplify your inner energy."</p>
+  <div class="bottom-bar">
+    <div class="brand-sm">Key<span>style</span></div>
+    <div>Elemental Edge™ · Confidential</div>
+    <div>keystyle.sg</div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 4: THE FIVE ELEMENTS ==================== -->
+<div class="slide-label">Slide 4 — The Five Elements Overview</div>
+<div class="slide slide-content content-slide" style="padding:40px 50px">
+  <div class="section-tag">The Framework</div>
+  <h2>The Five <span>Elemental</span> Archetypes</h2>
+  <div class="element-row">
+    <div class="element-card">
+      <div class="icon">🌊</div>
+      <div class="name">Water</div>
+      <div class="archetype">The Contemplator</div>
+      <div class="traits">Reflective · Creative · Calm<br>Goes with the flow</div>
+    </div>
+    <div class="element-card">
+      <div class="icon">🌿</div>
+      <div class="name">Wood</div>
+      <div class="archetype">The Crusader</div>
+      <div class="traits">Energetic · Driven · Decisive<br>Visionary goal setter</div>
+    </div>
+    <div class="element-card">
+      <div class="icon">🔥</div>
+      <div class="name">Fire</div>
+      <div class="archetype">The Captivator</div>
+      <div class="traits">Charismatic · Vibrant · Bold<br>Skilled communicator</div>
+    </div>
+    <div class="element-card">
+      <div class="icon">🏔️</div>
+      <div class="name">Earth</div>
+      <div class="archetype">The Caregiver</div>
+      <div class="traits">Nurturing · Grounded · Stable<br>Team-first mindset</div>
+    </div>
+    <div class="element-card">
+      <div class="icon">💎</div>
+      <div class="name">Metal</div>
+      <div class="archetype">The Connoisseur</div>
+      <div class="traits">Structured · Refined · Precise<br>Highest standards</div>
+    </div>
+  </div>
+  <p style="margin-top:16px;text-align:center;font-size:11px;color:var(--gr)">Each person has a <strong>primary element</strong> (who you naturally are) and an <strong>intention element</strong> (what you want to attract).</p>
+  <div class="bottom-bar">
+    <div class="brand-sm">Key<span>style</span></div>
+    <div>Elemental Edge™ · Confidential</div>
+    <div>keystyle.sg</div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 5: YOUR ASSESSMENT RESULTS ==================== -->
+<div class="slide-label">Slide 5 — Assessment Results Summary</div>
+<div class="slide slide-split">
+  <div class="slide-content content-slide">
+    <div class="section-tag">Your Results</div>
+    <h2>Your Assessment <span>Breakdown</span></h2>
+    <p style="margin-top:8px">Based on your questionnaire responses, here's how your elemental energy maps out:</p>
+
+    <table class="comparison" style="margin-top:14px">
+      <tr><th>Element</th><th>Comfort Zone Score</th><th>Intention Score</th></tr>
+      <tr><td>🌊 Water — Contemplator</td><td>[__/3]</td><td>[__/3]</td></tr>
+      <tr><td>🌿 Wood — Crusader</td><td>[__/3]</td><td>[__/3]</td></tr>
+      <tr><td>🔥 Fire — Captivator</td><td>[__/3]</td><td>[__/3]</td></tr>
+      <tr><td>🏔️ Earth — Caregiver</td><td>[__/3]</td><td>[__/3]</td></tr>
+      <tr><td>💎 Metal — Connoisseur</td><td>[__/3]</td><td>[__/3]</td></tr>
+    </table>
+    <p style="font-size:10px;color:var(--gr);margin-top:8px;font-style:italic">Flora will fill in these scores during the session based on your questionnaire.</p>
+  </div>
+  <div class="side-panel">
+    <div class="tag">How to Read This</div>
+    <h3>Two Dimensions</h3>
+    <ul>
+      <li><strong>Comfort Zone Score</strong> — Your natural elemental home. Where you instinctively gravitate.</li>
+      <li><strong>Intention Score</strong> — The energy you need to amplify right now to achieve your goals.</li>
+      <li>The magic happens when these two align in your wardrobe.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 6: THE REVEAL ==================== -->
+<div class="slide-label">Slide 6 — Element Reveal (Customise per client)</div>
+<div class="slide reveal-slide">
+  <div class="pre">Your Primary Element Is</div>
+  <div class="icon-large">[🌊 / 🌿 / 🔥 / 🏔️ / 💎]</div>
+  <h1>[ELEMENT NAME]</h1>
+  <div class="archetype-name">The [Archetype Name]</div>
+</div>
+
+<!-- ==================== SLIDE 7: WATER ELEMENT ==================== -->
+<div class="slide-label">Slide 7 — Water Element Detail (Use for Water clients)</div>
+<div class="slide slide-split">
+  <div class="side-panel" style="background:linear-gradient(135deg,#0a2540,#1a4a6b)">
+    <div class="tag" style="color:#7ec8e3">Water Element</div>
+    <h3>The Contemplator</h3>
+    <p>You are the deep thinker. Reflective, imaginative, creative. You go with the flow and bring mental clarity and introspection to everything you do.</p>
+    <ul>
+      <li>Creatives, innovators, intellectuals</li>
+      <li>Values: Freedom, individuality, depth</li>
+      <li>Energy: Calm, still, unique</li>
+      <li>Superpower: Problem-solving through reflection</li>
+    </ul>
+  </div>
+  <div class="slide-content content-slide">
+    <div class="section-tag">Your Style DNA</div>
+    <h2><span>Water</span> Design Elements</h2>
+    <div class="style-grid">
+      <div class="style-item">
+        <div class="icon">🎨</div>
+        <div><h4>Colours</h4><p>Dark tones — navy, black, charcoal, deep blue, indigo</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">🔲</div>
+        <div><h4>Patterns</h4><p>Abstract, asymmetric, watercolour-effect, freeform prints</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">🧵</div>
+        <div><h4>Fabrics</h4><p>Fluid, sheer, jersey, soft draping materials</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">📐</div>
+        <div><h4>Shapes</h4><p>Flowing, asymmetric, relaxed silhouettes, unstructured</p></div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <div class="brand-sm">Key<span>style</span></div>
+      <div>Elemental Edge™ · Confidential</div>
+      <div>keystyle.sg</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 8: WOOD ELEMENT ==================== -->
+<div class="slide-label">Slide 8 — Wood Element Detail (Use for Wood clients)</div>
+<div class="slide slide-split">
+  <div class="side-panel" style="background:linear-gradient(135deg,#1a3c1a,#2d6a2d)">
+    <div class="tag" style="color:#90ee90">Wood Element</div>
+    <h3>The Crusader</h3>
+    <p>You are the action-taker. Energetic, flexible, motivational. You're driven, decisive, and always moving towards your next big goal.</p>
+    <ul>
+      <li>Activists, motivators, champions</li>
+      <li>Values: Movement, growth, competition</li>
+      <li>Energy: Fresh, enthusiastic, courageous</li>
+      <li>Superpower: Visionary goal-setting</li>
+    </ul>
+  </div>
+  <div class="slide-content content-slide">
+    <div class="section-tag">Your Style DNA</div>
+    <h2><span>Wood</span> Design Elements</h2>
+    <div class="style-grid">
+      <div class="style-item">
+        <div class="icon">🎨</div>
+        <div><h4>Colours</h4><p>Blue, green, teal, forest tones, aquamarine</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">🔲</div>
+        <div><h4>Patterns</h4><p>Stripes, floral, plant-inspired, linear patterns</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">🧵</div>
+        <div><h4>Fabrics</h4><p>Stretch, performance, plant-based, breathable materials</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">📐</div>
+        <div><h4>Shapes</h4><p>Linear, angular, streamlined, athletic-inspired cuts</p></div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <div class="brand-sm">Key<span>style</span></div>
+      <div>Elemental Edge™ · Confidential</div>
+      <div>keystyle.sg</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 9: FIRE ELEMENT ==================== -->
+<div class="slide-label">Slide 9 — Fire Element Detail (Use for Fire clients)</div>
+<div class="slide slide-split">
+  <div class="side-panel" style="background:linear-gradient(135deg,#5c1a1a,#8b3a3a)">
+    <div class="tag" style="color:#ff9999">Fire Element</div>
+    <h3>The Captivator</h3>
+    <p>You are the showman. Charismatic, outgoing, warm, charming. You light up every room and connect effortlessly with people.</p>
+    <ul>
+      <li>Social butterflies, showpeople, orators</li>
+      <li>Values: Connection, fun, excitement</li>
+      <li>Energy: Vibrant, enthusiastic, expressive</li>
+      <li>Superpower: Magnetism and persuasion</li>
+    </ul>
+  </div>
+  <div class="slide-content content-slide">
+    <div class="section-tag">Your Style DNA</div>
+    <h2><span>Fire</span> Design Elements</h2>
+    <div class="style-grid">
+      <div class="style-item">
+        <div class="icon">🎨</div>
+        <div><h4>Colours</h4><p>Red, purple, orange, warm and vibrant tones</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">🔲</div>
+        <div><h4>Patterns</h4><p>Animal print, pointed motifs, life/organic patterns</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">🧵</div>
+        <div><h4>Fabrics</h4><p>Shiny, metallic, textured, attention-catching materials</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">📐</div>
+        <div><h4>Shapes</h4><p>Pointed, angular, statement pieces, bold accessories</p></div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <div class="brand-sm">Key<span>style</span></div>
+      <div>Elemental Edge™ · Confidential</div>
+      <div>keystyle.sg</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 10: EARTH ELEMENT ==================== -->
+<div class="slide-label">Slide 10 — Earth Element Detail (Use for Earth clients)</div>
+<div class="slide slide-split">
+  <div class="side-panel" style="background:linear-gradient(135deg,#4a3520,#8b6914)">
+    <div class="tag" style="color:#f0d58c">Earth Element</div>
+    <h3>The Caregiver</h3>
+    <p>You are the anchor. Nurturing, committed, grounded. You build stability and make everyone around you feel safe and supported.</p>
+    <ul>
+      <li>Givers, nurturers, confidantes</li>
+      <li>Values: Community, familiarity, security</li>
+      <li>Energy: Comforting, stable, balanced</li>
+      <li>Superpower: Building trust and loyalty</li>
+    </ul>
+  </div>
+  <div class="slide-content content-slide">
+    <div class="section-tag">Your Style DNA</div>
+    <h2><span>Earth</span> Design Elements</h2>
+    <div class="style-grid">
+      <div class="style-item">
+        <div class="icon">🎨</div>
+        <div><h4>Colours</h4><p>Yellow, brown, terracotta, warm earth tones, sand</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">🔲</div>
+        <div><h4>Patterns</h4><p>Checks, plaids, square patterns, houndstooth</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">🧵</div>
+        <div><h4>Fabrics</h4><p>Textured, natural fibres, cotton, linen, corduroy</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">📐</div>
+        <div><h4>Shapes</h4><p>Boxy, relaxed, square silhouettes, generous fit</p></div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <div class="brand-sm">Key<span>style</span></div>
+      <div>Elemental Edge™ · Confidential</div>
+      <div>keystyle.sg</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 11: METAL ELEMENT ==================== -->
+<div class="slide-label">Slide 11 — Metal Element Detail (Use for Metal clients)</div>
+<div class="slide slide-split">
+  <div class="side-panel" style="background:linear-gradient(135deg,#2b2b3d,#4a4a5e)">
+    <div class="tag" style="color:#c0c0e0">Metal Element</div>
+    <h3>The Connoisseur</h3>
+    <p>You are the authority. Structured, disciplined, ordered. You set the standard and lead with precision, refinement, and impeccable taste.</p>
+    <ul>
+      <li>Managers, strategists, leaders</li>
+      <li>Values: Quality, excellence, precision</li>
+      <li>Energy: Authoritative, principled, refined</li>
+      <li>Superpower: Discernment and leadership</li>
+    </ul>
+  </div>
+  <div class="slide-content content-slide">
+    <div class="section-tag">Your Style DNA</div>
+    <h2><span>Metal</span> Design Elements</h2>
+    <div class="style-grid">
+      <div class="style-item">
+        <div class="icon">🎨</div>
+        <div><h4>Colours</h4><p>White, pastels, metallic, silver, grey, pearl</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">🔲</div>
+        <div><h4>Patterns</h4><p>Polka dots, round motifs, minimal geometric patterns</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">🧵</div>
+        <div><h4>Fabrics</h4><p>Luxurious, premium, silk, cashmere, fine wool</p></div>
+      </div>
+      <div class="style-item">
+        <div class="icon">📐</div>
+        <div><h4>Shapes</h4><p>Curved, tailored, refined, sculpted silhouettes</p></div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <div class="brand-sm">Key<span>style</span></div>
+      <div>Elemental Edge™ · Confidential</div>
+      <div>keystyle.sg</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 12: INTENTION VS COMFORT ZONE ==================== -->
+<div class="slide-label">Slide 12 — Intention vs Comfort Zone Analysis</div>
+<div class="slide slide-content content-slide" style="padding:40px 50px">
+  <div class="section-tag">The Gap Analysis</div>
+  <h2>Your Comfort Zone vs <span>Your Intention</span></h2>
+  <p>Here's where it gets interesting. Are you dressing for who you <strong>are</strong> — or for who you <strong>want to become</strong>?</p>
+
+  <table class="comparison" style="margin-top:14px">
+    <tr><th style="width:30%">Dimension</th><th style="width:35%">Your Comfort Zone</th><th style="width:35%">Your Intention</th></tr>
+    <tr><td>Primary Element</td><td>[Flora fills in]</td><td>[Flora fills in]</td></tr>
+    <tr><td>Colours You Wear</td><td>[Current wardrobe palette]</td><td>[Recommended palette]</td></tr>
+    <tr><td>Patterns You Choose</td><td>[Current patterns]</td><td>[Recommended patterns]</td></tr>
+    <tr><td>Overall Energy</td><td>[Current energy]</td><td>[Desired energy]</td></tr>
+    <tr><td>Perception Gap</td><td colspan="2" style="text-align:center;color:var(--rg);font-weight:600">[Flora's assessment]</td></tr>
+  </table>
+
+  <div class="highlight" style="margin-top:14px">
+    <p><strong>The Insight:</strong> When there's a gap between your comfort zone and your intention, your wardrobe may be <em>holding you back</em> from your goals. The good news? Small, intentional shifts can make a massive difference.</p>
+  </div>
+  <div class="bottom-bar">
+    <div class="brand-sm">Key<span>style</span></div>
+    <div>Elemental Edge™ · Confidential</div>
+    <div>keystyle.sg</div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 13: QUICK WINS ==================== -->
+<div class="slide-label">Slide 13 — 3 Quick Wins</div>
+<div class="slide slide-content content-slide" style="padding:40px 50px">
+  <div class="section-tag">Immediate Action</div>
+  <h2>Your <span>3 Quick Wins</span></h2>
+  <p>Start aligning your wardrobe to your element <strong>this week</strong>:</p>
+
+  <div class="wins-grid">
+    <div class="win-card">
+      <div class="num">1</div>
+      <h4>[Quick Win #1]</h4>
+      <p style="margin-top:6px">[Flora customises — e.g., "Add one dark navy piece to your daily rotation to anchor your Water energy"]</p>
+    </div>
+    <div class="win-card">
+      <div class="num">2</div>
+      <h4>[Quick Win #2]</h4>
+      <p style="margin-top:6px">[Flora customises — e.g., "Swap your square watch for a round face to lean into your Metal refinement"]</p>
+    </div>
+    <div class="win-card">
+      <div class="num">3</div>
+      <h4>[Quick Win #3]</h4>
+      <p style="margin-top:6px">[Flora customises — e.g., "For your next pitch, wear a deep green tie to activate your Wood Crusader energy"]</p>
+    </div>
+  </div>
+
+  <p style="margin-top:16px;text-align:center;font-style:italic;color:var(--rg);font-size:12px">"Small shifts, big impact. That's the Elemental Edge."</p>
+  <div class="bottom-bar">
+    <div class="brand-sm">Key<span>style</span></div>
+    <div>Elemental Edge™ · Confidential</div>
+    <div>keystyle.sg</div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 14: TEASER / UPSELL ==================== -->
+<div class="slide-label">Slide 14 — What's Next (Upsell)</div>
+<div class="slide slide-content cta-slide" style="padding:40px 50px">
+  <div class="section-tag" style="color:var(--rg)">What's Next?</div>
+  <h2>Imagine Going <span>Even Deeper</span>...</h2>
+  <p>Today you got a <strong>snapshot</strong>. But your style transformation doesn't have to stop here. Here's what a full Keystyle experience looks like:</p>
+
+  <div class="packages">
+    <div class="cta-pkg">
+      <div class="tier">Tier 1</div>
+      <div class="name">Spark</div>
+      <div class="price">$497</div>
+      <div class="desc">1–2 Weeks<br>Full colour analysis<br>Personal Style Blueprint<br>Wardrobe photo review</div>
+    </div>
+    <div class="cta-pkg featured">
+      <div class="tier">Most Popular</div>
+      <div class="name">Signature</div>
+      <div class="price">$1,297</div>
+      <div class="desc">3–4 Weeks<br>Everything in Spark, plus:<br>In-person wardrobe audit<br>Personal shopping trip<br>Signature Lookbook</div>
+      <div class="badge">Recommended Next Step</div>
+    </div>
+    <div class="cta-pkg">
+      <div class="tier">Tier 3</div>
+      <div class="name">Supreme</div>
+      <div class="price">$2,497</div>
+      <div class="desc">6–8 Weeks<br>Total transformation<br>Brand narrative<br>Networking presence<br>Professional photoshoot</div>
+    </div>
+    <div class="cta-pkg">
+      <div class="tier">Tier 4</div>
+      <div class="name">Sovereign</div>
+      <div class="price">$4,997</div>
+      <div class="desc">10–12 Weeks<br>Elite personal branding<br>Bespoke wardrobe build<br>Executive presence coaching</div>
+    </div>
+  </div>
+
+  <p style="margin-top:14px;text-align:center;font-size:11px;color:var(--gr)">As an Elemental Edge™ client, your $89 is <strong>credited towards any package</strong> you upgrade to within 14 days.</p>
+  <div class="bottom-bar">
+    <div class="brand-sm">Key<span>style</span></div>
+    <div>Elemental Edge™ · Confidential</div>
+    <div>keystyle.sg</div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 15: CLOSING ==================== -->
+<div class="slide-label">Slide 15 — Closing</div>
+<div class="slide closing-slide">
+  <h2>Level Up Your Look.<br><span>Level Up Your Life.</span></h2>
+  <p>Thank you for your time today, [Client Name]. Your Elemental Edge™ Report will be sent to you within 24 hours.</p>
+  <div class="contact">
+    Flora Leong · Keystyle<br>
+    flora@keystyle.sg · keystyle.sg<br>
+    WhatsApp: [number]
+  </div>
+  <div class="decorative" style="position:absolute;bottom:-60px;right:-40px;width:250px;height:250px;border:2px solid rgba(255,255,255,.06);border-radius:50%"></div>
+</div>
+
+</body>
+</html>

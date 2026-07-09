@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Elemental Edge™ — Pre-Session Assessment Questionnaire | Keystyle</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--em:#2D6A4F;--mint:#52B788;--rg:#C9956C;--blush:#E8A598;--cream:#FAF7F2;--ch:#2B2B2B;--gr:#6B6B6B;--lg:#E8E4DE}
+@page{size:A4;margin:20mm 18mm}
+body{font-family:Inter,sans-serif;background:#f0ede8;color:var(--ch);display:flex;justify-content:center;padding:30px 20px}
+.doc{width:210mm;background:white;padding:40px 48px;box-shadow:0 20px 80px rgba(0,0,0,.12)}
+
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:2px solid var(--em);margin-bottom:28px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--em),var(--mint));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:white}
+.brand h1{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--ch);letter-spacing:3px;text-transform:uppercase;line-height:1}
+.brand p{font-size:8px;color:var(--rg);letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-top:2px}
+.header-right{text-align:right}
+.header-right .pkg{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--em);line-height:1.2}
+.header-right .sub{font-size:8px;color:var(--gr);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+
+/* Section headers */
+.section{margin-bottom:24px;page-break-inside:avoid}
+.section-num{display:inline-block;background:var(--em);color:white;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:3px;margin-bottom:10px}
+.section h2{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--ch);margin-bottom:6px}
+.section .desc{font-size:10px;color:var(--gr);line-height:1.6;margin-bottom:14px;font-style:italic}
+
+/* Form fields */
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:12px}
+.field-row.full{grid-template-columns:1fr}
+.field-row.thirds{grid-template-columns:1fr 1fr 1fr}
+.field{margin-bottom:0}
+.field label{display:block;font-size:9px;font-weight:600;color:var(--em);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.field .input-line{border:none;border-bottom:1.5px solid var(--lg);padding:6px 2px;font-size:11px;width:100%;min-height:24px;background:transparent}
+.field .input-box{border:1.5px solid var(--lg);border-radius:4px;padding:8px;font-size:11px;width:100%;min-height:60px;background:var(--cream)}
+.field .helper{font-size:8px;color:var(--gr);margin-top:3px;font-style:italic}
+
+/* Checkbox grid */
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.check-item{display:flex;align-items:flex-start;gap:8px;font-size:10.5px;line-height:1.5;color:var(--ch)}
+.check-box{width:14px;height:14px;border:1.5px solid var(--lg);border-radius:2px;flex-shrink:0;margin-top:2px}
+
+/* T-shirt exercise */
+.tshirt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.tshirt{text-align:center;padding:14px 8px;border:1.5px solid var(--lg);border-radius:6px;background:var(--cream)}
+.tshirt .word{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--em)}
+.tshirt .element{font-size:8px;color:var(--gr);letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+.tshirt .icon{font-size:28px;margin-bottom:6px}
+
+/* Intention table */
+.intention-table{width:100%;border-collapse:collapse;margin-bottom:14px}
+.intention-table th{background:var(--em);color:white;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 10px;text-align:left;font-weight:600}
+.intention-table td{padding:10px;border-bottom:1px solid var(--lg);font-size:10px;vertical-align:top;line-height:1.6}
+.intention-table tr:nth-child(even){background:var(--cream)}
+.element-name{font-weight:600;color:var(--em);font-size:11px}
+.design-elements{color:var(--gr);font-size:9.5px}
+
+/* Rating scale */
+.scale-row{display:flex;align-items:center;gap:6px;margin-bottom:10px}
+.scale-label{font-size:10px;width:180px;flex-shrink:0;color:var(--ch)}
+.scale-dots{display:flex;gap:10px}
+.scale-dot{width:18px;height:18px;border:1.5px solid var(--lg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--gr)}
+.scale-labels{display:flex;justify-content:space-between;font-size:8px;color:var(--gr);padding-left:186px}
+
+/* Divider */
+.divider{border:none;border-top:1.5px solid var(--lg);margin:20px 0}
+
+/* Info box */
+.info-box{background:linear-gradient(135deg,#f0fbf4,var(--cream));border-left:3px solid var(--em);padding:12px 16px;border-radius:0 6px 6px 0;margin-bottom:16px}
+.info-box p{font-size:10px;line-height:1.7;color:var(--ch)}
+.info-box .label{font-size:8px;font-weight:600;color:var(--em);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+
+/* Footer */
+.footer{border-top:2px solid var(--em);padding-top:16px;margin-top:30px;display:flex;justify-content:space-between;align-items:center}
+.footer .left{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ch)}
+.footer .left span{color:var(--em)}
+.footer .center{text-align:center;font-size:8px;color:var(--gr);line-height:1.6}
+.footer .right{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;color:var(--rg)}
+
+/* Photo section */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px}
+.photo-box{border:2px dashed var(--lg);border-radius:6px;padding:20px 10px;text-align:center;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--cream)}
+.photo-box .icon{font-size:24px;margin-bottom:6px;color:var(--rg)}
+.photo-box .label{font-size:9px;color:var(--gr);font-weight:500}
+
+/* Confidential banner */
+.confidential{background:var(--em);color:white;text-align:center;padding:6px;font-size:7px;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:20px;border-radius:3px}
+
+/* Page break */
+.page-break{page-break-before:always;padding-top:20px}
+
+@media print{
+  body{padding:0;background:white}
+  .doc{box-shadow:none;width:100%;padding:30px 40px}
+}
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- CONFIDENTIAL BANNER -->
+  <div class="confidential">Confidential — For Keystyle Internal Use Only</div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">
+      <div class="brand-icon">🗝</div>
+      <div>
+        <h1>Keystyle</h1>
+        <p>Lifestyle Image Transformation Coaching</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="pkg">Elemental Edge™</div>
+      <div class="sub">Pre-Session Assessment Questionnaire</div>
+    </div>
+  </div>
+
+  <!-- INTRO BOX -->
+  <div class="info-box">
+    <div class="label">Welcome to Your Elemental Edge™ Session</div>
+    <p>Thank you for booking your Elemental Edge™ consultation. To make the most of our 45 minutes together, please complete this questionnaire honestly — there are no wrong answers! Your responses will help me identify your personal style element and create a tailored style snapshot just for you.</p>
+    <p style="margin-top:6px;font-style:italic;color:var(--rg);font-size:9px">Please return this form at least 24 hours before your session. — Flora Leong, Keystyle</p>
+  </div>
+
+  <!-- ===== SECTION 1: PERSONAL INFORMATION ===== -->
+  <div class="section">
+    <div class="section-num">Section 1</div>
+    <h2>Personal Information</h2>
+    <div class="desc">Let me get to know you.</div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Full Name</label>
+        <div class="input-line"></div>
+      </div>
+      <div class="field">
+        <label>Preferred Name</label>
+        <div class="input-line"></div>
+      </div>
+    </div>
+    <div class="field-row thirds">
+      <div class="field">
+        <label>Age</label>
+        <div class="input-line"></div>
+      </div>
+      <div class="field">
+        <label>Occupation / Industry</label>
+        <div class="input-line"></div>
+      </div>
+      <div class="field">
+        <label>Contact Number</label>
+        <div class="input-line"></div>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Email Address</label>
+        <div class="input-line"></div>
+      </div>
+      <div class="field">
+        <label>Date of Session</label>
+        <div class="input-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ===== SECTION 2: LIFESTYLE & GOALS ===== -->
+  <div class="section">
+    <div class="section-num">Section 2</div>
+    <h2>Lifestyle & Goals</h2>
+    <div class="desc">Understanding where you are and where you want to be.</div>
+
+    <div class="field-row full">
+      <div class="field">
+        <label>What does a typical day look like for you? (Work, social, leisure)</label>
+        <div class="input-box"></div>
+      </div>
+    </div>
+
+    <div class="field-row full">
+      <div class="field">
+        <label>What are your top 3 goals right now? (Career, personal, relationships)</label>
+        <div class="input-box"></div>
+        <div class="helper">These don't have to be fashion-related — we want to understand what drives you.</div>
+      </div>
+    </div>
+
+    <div class="field-row full">
+      <div class="field">
+        <label>How would you describe your current personal style in 3 words?</label>
+        <div class="input-line" style="font-size:14px;padding:10px 2px"></div>
+      </div>
+    </div>
+
+    <div class="field-row full">
+      <div class="field">
+        <label>How would you LIKE to be perceived by others? (e.g., authoritative, approachable, creative, polished)</label>
+        <div class="input-box"></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Do you dress differently for work vs weekends?</label>
+        <div class="check-grid" style="grid-template-columns:auto auto auto;gap:14px">
+          <div class="check-item"><div class="check-box"></div> Yes, very differently</div>
+          <div class="check-item"><div class="check-box"></div> Somewhat</div>
+          <div class="check-item"><div class="check-box"></div> No, pretty consistent</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>How confident do you feel about your current wardrobe?</label>
+        <div class="check-grid" style="grid-template-columns:auto auto auto;gap:14px">
+          <div class="check-item"><div class="check-box"></div> Very confident</div>
+          <div class="check-item"><div class="check-box"></div> Somewhat</div>
+          <div class="check-item"><div class="check-box"></div> Not at all</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ===== SECTION 3: THE T-SHIRT WORD EXERCISE ===== -->
+  <div class="section">
+    <div class="section-num">Section 3</div>
+    <h2>The T-Shirt Word Exercise</h2>
+    <div class="desc">If you could wear ONE word on your shirt that represents your core value, which of these resonates most? Rank them 1 (most) to 6 (least).</div>
+
+    <div class="tshirt-grid">
+      <div class="tshirt">
+        <div class="icon">🌊</div>
+        <div class="word">Freedom</div>
+        <div class="element">Water Element</div>
+        <div style="margin-top:8px;border-top:1px solid var(--lg);padding-top:6px">
+          <label style="font-size:8px;color:var(--gr)">Rank: ___</label>
+        </div>
+      </div>
+      <div class="tshirt">
+        <div class="icon">🌿</div>
+        <div class="word">Movement</div>
+        <div class="element">Wood Element</div>
+        <div style="margin-top:8px;border-top:1px solid var(--lg);padding-top:6px">
+          <label style="font-size:8px;color:var(--gr)">Rank: ___</label>
+        </div>
+      </div>
+      <div class="tshirt">
+        <div class="icon">🔥</div>
+        <div class="word">Connection</div>
+        <div class="element">Fire Element</div>
+        <div style="margin-top:8px;border-top:1px solid var(--lg);padding-top:6px">
+          <label style="font-size:8px;color:var(--gr)">Rank: ___</label>
+        </div>
+      </div>
+      <div class="tshirt">
+        <div class="icon">🏔️</div>
+        <div class="word">Community</div>
+        <div class="element">Earth Element</div>
+        <div style="margin-top:8px;border-top:1px solid var(--lg);padding-top:6px">
+          <label style="font-size:8px;color:var(--gr)">Rank: ___</label>
+        </div>
+      </div>
+      <div class="tshirt">
+        <div class="icon">💎</div>
+        <div class="word">Quality</div>
+        <div class="element">Metal Element</div>
+        <div style="margin-top:8px;border-top:1px solid var(--lg);padding-top:6px">
+          <label style="font-size:8px;color:var(--gr)">Rank: ___</label>
+        </div>
+      </div>
+      <div class="tshirt">
+        <div class="icon">⚡</div>
+        <div class="word">Fun</div>
+        <div class="element">Fire Element</div>
+        <div style="margin-top:8px;border-top:1px solid var(--lg);padding-top:6px">
+          <label style="font-size:8px;color:var(--gr)">Rank: ___</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-row full">
+      <div class="field">
+        <label>Is there a different word you'd choose? Write it here:</label>
+        <div class="input-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ===== SECTION 4: ELEMENTAL COMFORT ZONE ===== -->
+  <div class="section page-break">
+    <div class="section-num">Section 4</div>
+    <h2>Your Elemental Comfort Zone</h2>
+    <div class="desc">Where do you feel most "at home" in your clothes? Select ALL statements that apply to you.</div>
+
+    <table class="intention-table">
+      <tr>
+        <th style="width:35%">I Feel Most Like Myself When...</th>
+        <th style="width:15%">Element</th>
+        <th style="width:15%">Archetype</th>
+        <th style="width:35%">My Wardrobe Tends To Include...</th>
+      </tr>
+      <tr>
+        <td>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> My clothes feel effortless and unrestricted</div>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I look unique and unconventional</div>
+          <div class="check-item"><div class="check-box"></div> I feel calm and introspective in what I wear</div>
+        </td>
+        <td><span class="element-name">🌊 WATER</span></td>
+        <td>The Contemplator</td>
+        <td>
+          <div class="design-elements">
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Dark colours (navy, black, charcoal)</div>
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Fluid/flowing fabrics</div>
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Abstract patterns</div>
+            <div class="check-item" style="font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Asymmetric / flowing shapes</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> My outfit conveys energy and ambition</div>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I feel driven and action-ready</div>
+          <div class="check-item"><div class="check-box"></div> I prefer sporty, functional clothing</div>
+        </td>
+        <td><span class="element-name">🌿 WOOD</span></td>
+        <td>The Crusader</td>
+        <td>
+          <div class="design-elements">
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Blue/green tones</div>
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Stripes and linear patterns</div>
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Stretch/athletic fabrics</div>
+            <div class="check-item" style="font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Angular, streamlined shapes</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I want to be noticed and remembered</div>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I enjoy bold, expressive pieces</div>
+          <div class="check-item"><div class="check-box"></div> My clothes reflect my personality</div>
+        </td>
+        <td><span class="element-name">🔥 FIRE</span></td>
+        <td>The Captivator</td>
+        <td>
+          <div class="design-elements">
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Red, purple, warm tones</div>
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Animal prints / bold patterns</div>
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Shiny / textured fabrics</div>
+            <div class="check-item" style="font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Pointed, angular shapes</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I feel most comfortable when I look approachable</div>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I prefer familiar, reliable pieces</div>
+          <div class="check-item"><div class="check-box"></div> My clothing makes others feel at ease</div>
+        </td>
+        <td><span class="element-name">🏔️ EARTH</span></td>
+        <td>The Caregiver</td>
+        <td>
+          <div class="design-elements">
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Yellow, brown, earth tones</div>
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Checks / square patterns</div>
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Textured, natural fabrics</div>
+            <div class="check-item" style="font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Boxy, relaxed shapes</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I value precision and sophistication</div>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I want my outfit to signal authority</div>
+          <div class="check-item"><div class="check-box"></div> I invest in fewer, higher-quality pieces</div>
+        </td>
+        <td><span class="element-name">💎 METAL</span></td>
+        <td>The Connoisseur</td>
+        <td>
+          <div class="design-elements">
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> White, pastel, metallic tones</div>
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Round / polka dot patterns</div>
+            <div class="check-item" style="margin-bottom:4px;font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Luxurious, premium fabrics</div>
+            <div class="check-item" style="font-size:9.5px"><div class="check-box" style="width:12px;height:12px"></div> Curved, tailored shapes</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ===== SECTION 5: INTENTION IDENTIFICATION ===== -->
+  <div class="section">
+    <div class="section-num">Section 5</div>
+    <h2>Identify Your Intention</h2>
+    <div class="desc">Your clothes can visually affirm your goals and naturally attract what you want into your life. Select the statements that most resonate with where you are RIGHT NOW.</div>
+
+    <table class="intention-table">
+      <tr>
+        <th style="width:50%">Your Intention Is That Of...</th>
+        <th style="width:50%">Select If This Resonates</th>
+      </tr>
+      <tr>
+        <td><span class="element-name">The Contemplator (Water)</span><br>Expressing individuality, seeking tranquility, goals that require deep reflection</td>
+        <td>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I want to express my individuality</div>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I desire tranquility or inner peace</div>
+          <div class="check-item"><div class="check-box"></div> My current goals require deep reflection and thinking</div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="element-name">The Crusader (Wood)</span><br>Being competitive, seeking growth & expansion, goals that require bold action</td>
+        <td>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I want to be more competitive</div>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I desire expansion and growth</div>
+          <div class="check-item"><div class="check-box"></div> My current goals require decisive action</div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="element-name">The Captivator (Fire)</span><br>Being noticed, seeking excitement, goals that require passion and charisma</td>
+        <td>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I want to be noticed and remembered</div>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I desire excitement and vibrancy in my life</div>
+          <div class="check-item"><div class="check-box"></div> My current goals require passion and persuasion</div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="element-name">The Caregiver (Earth)</span><br>Serving others, seeking security & support, goals that require commitment</td>
+        <td>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I want to be of service to others</div>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I desire security and support</div>
+          <div class="check-item"><div class="check-box"></div> My current goals require commitment and persistence</div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="element-name">The Connoisseur (Metal)</span><br>Getting organised, upscaling quality, goals that require discernment and leadership</td>
+        <td>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I want to get more organised and refined</div>
+          <div class="check-item" style="margin-bottom:6px"><div class="check-box"></div> I desire to upscale the quality of my life</div>
+          <div class="check-item"><div class="check-box"></div> My current goals require discernment and precision</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ===== SECTION 6: STYLE CONFIDENCE RATING ===== -->
+  <div class="section">
+    <div class="section-num">Section 6</div>
+    <h2>Style Confidence Self-Assessment</h2>
+    <div class="desc">Rate yourself from 1 (strongly disagree) to 5 (strongly agree) on the following statements.</div>
+
+    <div class="scale-labels" style="padding-left:186px;margin-bottom:8px">
+      <span>1 — Strongly Disagree</span>
+      <span>2</span>
+      <span>3 — Neutral</span>
+      <span>4</span>
+      <span>5 — Strongly Agree</span>
+    </div>
+
+    <div class="scale-row">
+      <div class="scale-label">I know what colours suit me best</div>
+      <div class="scale-dots">
+        <div class="scale-dot">1</div>
+        <div class="scale-dot">2</div>
+        <div class="scale-dot">3</div>
+        <div class="scale-dot">4</div>
+        <div class="scale-dot">5</div>
+      </div>
+    </div>
+    <div class="scale-row">
+      <div class="scale-label">I feel confident choosing outfits for important events</div>
+      <div class="scale-dots">
+        <div class="scale-dot">1</div>
+        <div class="scale-dot">2</div>
+        <div class="scale-dot">3</div>
+        <div class="scale-dot">4</div>
+        <div class="scale-dot">5</div>
+      </div>
+    </div>
+    <div class="scale-row">
+      <div class="scale-label">My wardrobe reflects who I am today</div>
+      <div class="scale-dots">
+        <div class="scale-dot">1</div>
+        <div class="scale-dot">2</div>
+        <div class="scale-dot">3</div>
+        <div class="scale-dot">4</div>
+        <div class="scale-dot">5</div>
+      </div>
+    </div>
+    <div class="scale-row">
+      <div class="scale-label">I dress with intention, not just convenience</div>
+      <div class="scale-dots">
+        <div class="scale-dot">1</div>
+        <div class="scale-dot">2</div>
+        <div class="scale-dot">3</div>
+        <div class="scale-dot">4</div>
+        <div class="scale-dot">5</div>
+      </div>
+    </div>
+    <div class="scale-row">
+      <div class="scale-label">People perceive me the way I want to be perceived</div>
+      <div class="scale-dots">
+        <div class="scale-dot">1</div>
+        <div class="scale-dot">2</div>
+        <div class="scale-dot">3</div>
+        <div class="scale-dot">4</div>
+        <div class="scale-dot">5</div>
+      </div>
+    </div>
+    <div class="scale-row">
+      <div class="scale-label">I understand my personal brand</div>
+      <div class="scale-dots">
+        <div class="scale-dot">1</div>
+        <div class="scale-dot">2</div>
+        <div class="scale-dot">3</div>
+        <div class="scale-dot">4</div>
+        <div class="scale-dot">5</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ===== SECTION 7: CURRENT STYLE PHOTOS ===== -->
+  <div class="section">
+    <div class="section-num">Section 7</div>
+    <h2>Your Current Style Snapshot</h2>
+    <div class="desc">Please share 3 photos of your typical daily outfits (work, casual, and social). These will be used during our session for a quick style assessment.</div>
+
+    <div class="photo-grid">
+      <div class="photo-box">
+        <div class="icon">📸</div>
+        <div class="label">WORK OUTFIT</div>
+        <div style="font-size:8px;color:var(--gr);margin-top:4px">What you wear to the office</div>
+      </div>
+      <div class="photo-box">
+        <div class="icon">📸</div>
+        <div class="label">CASUAL / WEEKEND</div>
+        <div style="font-size:8px;color:var(--gr);margin-top:4px">Your go-to relaxed look</div>
+      </div>
+      <div class="photo-box">
+        <div class="icon">📸</div>
+        <div class="label">SOCIAL / EVENT</div>
+        <div style="font-size:8px;color:var(--gr);margin-top:4px">How you dress for networking or events</div>
+      </div>
+    </div>
+
+    <div class="info-box" style="background:linear-gradient(135deg,#fff7f4,white);border-left-color:var(--rg)">
+      <div class="label" style="color:var(--rg)">How to Submit Photos</div>
+      <p>Email your photos to <strong>flora@keystyle.sg</strong> or WhatsApp them directly. Full-body shots in natural lighting work best!</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ===== SECTION 8: ANYTHING ELSE ===== -->
+  <div class="section">
+    <div class="section-num">Section 8</div>
+    <h2>Anything Else?</h2>
+    <div class="desc">Is there anything else you'd like me to know before our session? Any specific style challenges, upcoming events, or goals?</div>
+
+    <div class="field-row full">
+      <div class="field">
+        <div class="input-box" style="min-height:80px"></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>How did you hear about Keystyle?</label>
+        <div class="check-grid">
+          <div class="check-item"><div class="check-box"></div> BNI referral</div>
+          <div class="check-item"><div class="check-box"></div> LinkedIn</div>
+          <div class="check-item"><div class="check-box"></div> Instagram</div>
+          <div class="check-item"><div class="check-box"></div> Friend / colleague</div>
+          <div class="check-item"><div class="check-box"></div> Event / workshop</div>
+          <div class="check-item"><div class="check-box"></div> Other: ___________</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Would you be open to exploring a full transformation package?</label>
+        <div class="check-grid" style="grid-template-columns:auto auto auto;gap:14px">
+          <div class="check-item"><div class="check-box"></div> Yes, curious!</div>
+          <div class="check-item"><div class="check-box"></div> Maybe</div>
+          <div class="check-item"><div class="check-box"></div> Just this for now</div>
+        </div>
+        <div class="helper">No pressure — this is just for us to know how best to serve you.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="left">Key<span>style</span></div>
+    <div class="center">
+      Flora Leong · Lifestyle Image Transformation Coach<br>
+      Elemental Edge™ Assessment · Confidential
+    </div>
+    <div class="right">Level Up Your Look.<br>Level Up Your Life.</div>
+  </div>
+
+</div>
+</body>
+</html>

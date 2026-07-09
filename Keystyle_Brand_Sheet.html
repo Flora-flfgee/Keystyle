@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Keystyle Brand Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--em:#2D6A4F;--mint:#52B788;--rg:#C9956C;--blush:#E8A598;--cream:#FAF7F2;--ch:#2B2B2B;--gr:#6B6B6B;--lg:#E8E4DE}
+body{font-family:Inter,sans-serif;background:#f0ede8;color:var(--ch);display:flex;justify-content:center;padding:40px 20px}
+.page{width:210mm;background:white;padding:44px 50px;box-shadow:0 20px 80px rgba(0,0,0,.13);position:relative;overflow:hidden}
+.page::before{content:'';position:absolute;top:0;left:0;width:130px;height:130px;background:linear-gradient(135deg,var(--em),transparent 65%);opacity:.07}
+.page::after{content:'';position:absolute;bottom:0;right:0;width:200px;height:200px;background:radial-gradient(circle at bottom right,var(--rg),transparent 65%);opacity:.09}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;padding-bottom:20px;border-bottom:1.5px solid var(--lg)}
+.bm{display:flex;align-items:center;gap:13px}
+.ki{width:48px;height:48px;background:linear-gradient(135deg,var(--em),var(--mint));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:white;box-shadow:0 4px 16px rgba(45,106,79,.28)}
+.bt h1{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--ch);letter-spacing:4px;text-transform:uppercase;line-height:1}
+.bt p{font-size:9px;color:var(--rg);letter-spacing:2.5px;text-transform:uppercase;font-weight:500;margin-top:3px}
+.tl{text-align:right;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--gr);line-height:1.5}
+.tl strong{color:var(--em);font-style:normal;font-weight:700}
+.sl{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--rg);font-weight:600;margin-bottom:11px}
+.founder{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:20px}
+.founder h2{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:var(--ch);margin-bottom:8px;line-height:1.25}
+.founder h2 span{color:var(--em)}
+.founder > div > p{font-size:10.5px;line-height:1.75;color:var(--gr)}
+.usp{list-style:none}
+.usp li{font-size:10px;padding:5.5px 0;border-bottom:1px solid var(--lg);display:flex;align-items:flex-start;gap:7px;color:var(--ch);line-height:1.4}
+.usp li::before{content:'◆';color:var(--mint);font-size:6px;margin-top:3px;flex-shrink:0}
+.pos{background:linear-gradient(135deg,var(--em),#1B4332);border-radius:9px;padding:18px 24px;margin-bottom:20px;position:relative;overflow:hidden}
+.pos::before{content:'"';position:absolute;top:-18px;left:14px;font-family:'Cormorant Garamond',serif;font-size:130px;color:rgba(255,255,255,.05);line-height:1}
+.pos p{font-family:'Cormorant Garamond',serif;font-size:14.5px;font-style:italic;color:white;line-height:1.7;position:relative}
+.pos .attr{font-family:Inter,sans-serif;font-size:8px;color:var(--mint);letter-spacing:2px;text-transform:uppercase;margin-top:8px}
+.mv{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:20px}
+.mvc{border-left:3px solid var(--em);padding:12px 14px;background:var(--cream);border-radius:0 7px 7px 0}
+.mvc.v{border-left-color:var(--rg)}
+.mvc h3{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--em);font-weight:600;margin-bottom:6px}
+.mvc.v h3{color:var(--rg)}
+.mvc p{font-size:10px;line-height:1.7;color:var(--ch)}
+.targets{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:20px}
+.tc{background:var(--cream);border-radius:7px;padding:10px 8px;text-align:center}
+.tc .ico{font-size:17px;margin-bottom:4px}
+.tc .tn{font-size:9px;font-weight:600;color:var(--ch);margin-bottom:3px;line-height:1.3}
+.tc .td{font-size:8px;color:var(--gr);line-height:1.4}
+.pkgs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px}
+.pkg{border:1px solid var(--lg);border-radius:7px;padding:12px 9px;text-align:center}
+.pkg.f{border-color:var(--rg);background:linear-gradient(160deg,#fff7f4,white)}
+.pkg .tier{font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--rg);font-weight:600;margin-bottom:2px}
+.pkg .name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--ch);margin-bottom:2px}
+.pkg .price{font-size:12px;font-weight:600;color:var(--em);margin-bottom:5px}
+.pkg .dur{font-size:8px;color:var(--gr);line-height:1.4}
+.mem{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+.mc{border:1px solid var(--mint);border-radius:7px;padding:11px 9px;background:linear-gradient(160deg,#f0fbf4,white)}
+.mc .mt{font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--em);font-weight:600;margin-bottom:2px}
+.mc .mn{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;color:var(--ch);margin-bottom:2px}
+.mc .mp{font-size:10.5px;font-weight:600;color:var(--rg);margin-bottom:4px}
+.mc .md{font-size:8px;color:var(--gr);line-height:1.5}
+.palette{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:20px}
+.sw{border-radius:6px;overflow:hidden;border:1px solid var(--lg)}
+.swc{height:44px}
+.swi{padding:4px 6px;background:var(--cream)}
+.swi .sn{font-size:7.5px;font-weight:600;color:var(--ch);display:block}
+.swi .sh{font-size:7px;color:var(--gr);font-family:monospace}
+.footer{border-top:1.5px solid var(--lg);padding-top:14px;display:flex;justify-content:space-between;align-items:center}
+.fb{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ch)}
+.fb span{color:var(--em)}
+.fc{text-align:center;font-size:8.5px;color:var(--gr);line-height:1.65}
+.ftl{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11.5px;color:var(--rg);text-align:right}
+@media print{body{padding:0;background:white}.page{box-shadow:none;width:100%}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+  <div class="bm">
+    <div class="ki">🗝</div>
+    <div class="bt"><h1>Keystyle</h1><p>Lifestyle Image Transformation Coaching</p></div>
+  </div>
+  <div class="tl"><strong>Level Up Your Look.</strong><br>Level Up Your Life.</div>
+</div>
+<div class="sl">The Founder</div>
+<div class="founder">
+  <div>
+    <h2>Flora Leong — <span>Lifestyle Image<br>Transformation Coach</span></h2>
+    <p>With 20 years in finance and a passion for human transformation, Flora built Keystyle to close the visibility gap faced by Singapore's most capable men. As a BNI Director Consultant, she combines corporate intelligence, proven style strategy, and holistic coaching to turn overlooked men into unforgettable ones.</p>
+  </div>
+  <ul class="usp">
+    <li>20 years corporate intelligence — she lives in her clients' world</li>
+    <li>BNI Director Consultant — built-in referral network of hundreds</li>
+    <li>Holistic methodology: mindset + image + lifestyle integration</li>
+    <li>Culturally attuned to Singaporean male ambition and identity</li>
+    <li>Results-tracked: career wins, promotions and relationships</li>
+  </ul>
+</div>
+<div class="pos">
+  <p>"The only lifestyle image transformation coach in Singapore who combines 20 years of corporate intelligence, active BNI leadership, and a proven makeover methodology — to turn overlooked men into unforgettable ones."</p>
+  <div class="attr">Flora Leong · Founder, Keystyle · Unique Selling Proposition</div>
+</div>
+<div class="sl">Mission &amp; Vision</div>
+<div class="mv">
+  <div class="mvc"><h3>Mission</h3><p>To empower men to step into their fullest potential through intentional image transformation — combining style strategy, holistic coaching, and personalised execution — so they can command respect and achieve the success they have already earned.</p></div>
+  <div class="mvc v"><h3>Vision</h3><p>A Singapore where every ambitious man walks into every room knowing his presence reflects his potential — and where Keystyle is the name behind that transformation.</p></div>
+</div>
+<div class="sl">Who We Serve</div>
+<div class="targets">
+  <div class="tc"><div class="ico">💼</div><div class="tn">The Single Man</div><div class="td">Smart and successful but invisible. Wants to attract, not just impress.</div></div>
+  <div class="tc"><div class="ico">🤝</div><div class="tn">The Introvert Businessman</div><div class="td">Brilliant ideas, overlooked in networking rooms.</div></div>
+  <div class="tc"><div class="ico">👑</div><div class="tn">The Agency Leader</div><div class="td">Leads a team but lacks the commanding presence of an authority.</div></div>
+  <div class="tc"><div class="ico">📈</div><div class="tn">The Mid Executive</div><div class="td">Hard worker, invisible to leadership. Ready to dress the part.</div></div>
+</div>
+<div class="sl">Transformation Packages</div>
+<div class="pkgs">
+  <div class="pkg"><div class="tier">Tier 1</div><div class="name">Spark</div><div class="price">$497</div><div class="dur">1–2 Weeks · Style Blueprint</div></div>
+  <div class="pkg f"><div class="tier">Tier 2</div><div class="name">Signature</div><div class="price">$1,297</div><div class="dur">3–4 Weeks · Wardrobe Overhaul</div></div>
+  <div class="pkg"><div class="tier">Tier 3</div><div class="name">Supreme</div><div class="price">$2,497</div><div class="dur">6–8 Weeks · Total Transformation</div></div>
+  <div class="pkg"><div class="tier">Tier 4</div><div class="name">Sovereign</div><div class="price">$4,997</div><div class="dur">10–12 Weeks · Elite Personal Brand</div></div>
+</div>
+<div class="sl">The Keystyle Brotherhood — Monthly Membership</div>
+<div class="mem">
+  <div class="mc"><div class="mt">Alumni</div><div class="mn">Brotherhood</div><div class="mp">$97 / month</div><div class="md">Group coaching · Style updates · Community access · Partner discounts</div></div>
+  <div class="mc"><div class="mt">Premium</div><div class="mn">Elite</div><div class="mp">$197 / month</div><div class="md">All above + monthly outfit review + 1 quarterly 1:1 session with Flora</div></div>
+  <div class="mc"><div class="mt">VIP</div><div class="mn">Sovereign</div><div class="mp">$297 / month</div><div class="md">All above + quarterly lifestyle review + Sovereign Dinners + lifetime access</div></div>
+</div>
+<div class="sl">Brand Colour Palette</div>
+<div class="palette">
+  <div class="sw"><div class="swc" style="background:#2D6A4F"></div><div class="swi"><span class="sn">Deep Emerald</span><span class="sh">#2D6A4F</span></div></div>
+  <div class="sw"><div class="swc" style="background:#52B788"></div><div class="swi"><span class="sn">Tint Green</span><span class="sh">#52B788</span></div></div>
+  <div class="sw"><div class="swc" style="background:#C9956C"></div><div class="swi"><span class="sn">Rose Gold</span><span class="sh">#C9956C</span></div></div>
+  <div class="sw"><div class="swc" style="background:#E8A598"></div><div class="swi"><span class="sn">Blush Pink</span><span class="sh">#E8A598</span></div></div>
+  <div class="sw"><div class="swc" style="background:#FAF7F2;border-bottom:1px solid #E8E4DE"></div><div class="swi"><span class="sn">Cream</span><span class="sh">#FAF7F2</span></div></div>
+  <div class="sw"><div class="swc" style="background:#2B2B2B"></div><div class="swi"><span class="sn">Charcoal</span><span class="sh">#2B2B2B</span></div></div>
+</div>
+<div class="footer">
+  <div class="fb">Key<span>style</span></div>
+  <div class="fc">Flora Leong · Lifestyle Image Transformation Coach · BNI Director Consultant, Singapore<br>keystyle.sg &nbsp;|&nbsp; Empowering Men to Present Their Best Selves</div>
+  <div class="ftl">Level Up Your Look.<br>Level Up Your Life.</div>
+</div>
+</div>
+</body>
+</html>

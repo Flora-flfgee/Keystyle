@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Elemental Edge™ — Client Report Booklet | Keystyle</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--em:#2D6A4F;--mint:#52B788;--rg:#C9956C;--blush:#E8A598;--cream:#FAF7F2;--ch:#2B2B2B;--gr:#6B6B6B;--lg:#E8E4DE}
+@page{size:A4;margin:18mm 16mm}
+body{font-family:Inter,sans-serif;background:#f0ede8;color:var(--ch);display:flex;flex-direction:column;align-items:center;padding:30px 20px;gap:30px}
+
+/* Page container */
+.page{width:210mm;background:white;padding:40px 48px;box-shadow:0 20px 60px rgba(0,0,0,.12);position:relative;overflow:hidden}
+.page::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--em),var(--mint),var(--rg))}
+.page-label{font-size:10px;color:#888;letter-spacing:3px;text-transform:uppercase;font-weight:600;text-align:center}
+
+/* Cover page */
+.cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:700px;background:linear-gradient(160deg,#1B4332 0%,var(--em) 40%,#2D6A4F 100%);color:white;padding:60px}
+.cover::before{background:linear-gradient(90deg,var(--rg),var(--blush),var(--rg))}
+.cover .brand-icon{width:64px;height:64px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px;border:2px solid rgba(255,255,255,.1)}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;line-height:1.15;margin-bottom:8px;letter-spacing:2px}
+.cover h1 span{color:var(--rg)}
+.cover .pkg-name{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mint);font-weight:500;margin-bottom:30px}
+.cover .divider-line{width:60px;height:2px;background:var(--rg);margin:0 auto 24px}
+.cover .client-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;font-style:italic;color:rgba(255,255,255,.8);margin-bottom:6px}
+.cover .client-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.cover .date{font-size:10px;color:rgba(255,255,255,.4);margin-top:24px}
+.cover .footer-cover{position:absolute;bottom:30px;font-size:8px;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase}
+.cover .decorative-ring{position:absolute;bottom:-80px;right:-60px;width:300px;height:300px;border:2px solid rgba(255,255,255,.04);border-radius:50%}
+.cover .decorative-ring2{position:absolute;bottom:-40px;right:-20px;width:200px;height:200px;border:2px solid rgba(255,255,255,.03);border-radius:50%}
+
+/* Headers */
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--em)}
+.section-num{background:var(--em);color:white;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:3px;flex-shrink:0}
+.section-header h2{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--ch)}
+.sub-heading{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--em);margin-bottom:8px;margin-top:18px}
+
+/* Info boxes */
+.info-box{background:linear-gradient(135deg,#f0fbf4,var(--cream));border-left:3px solid var(--em);padding:14px 18px;border-radius:0 6px 6px 0;margin-bottom:16px}
+.info-box.warm{background:linear-gradient(135deg,#fff7f4,white);border-left-color:var(--rg)}
+.info-box .label{font-size:8px;font-weight:600;color:var(--em);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.info-box.warm .label{color:var(--rg)}
+.info-box p{font-size:10.5px;line-height:1.7;color:var(--ch)}
+
+/* Fillable fields */
+.field-group{margin-bottom:14px}
+.field-label{font-size:9px;font-weight:600;color:var(--em);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.field-line{border-bottom:1.5px solid var(--lg);padding:6px 2px;min-height:24px;margin-bottom:8px}
+.field-box{border:1.5px solid var(--lg);border-radius:4px;padding:10px;min-height:60px;background:var(--cream);margin-bottom:8px}
+.field-box.tall{min-height:90px}
+.field-helper{font-size:8px;color:var(--gr);font-style:italic;margin-top:2px}
+
+/* Grid layouts */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+
+/* Element profile card */
+.element-profile{display:grid;grid-template-columns:180px 1fr;gap:20px;margin-bottom:18px}
+.element-visual{text-align:center;padding:20px 14px;border-radius:8px;background:var(--em);color:white}
+.element-visual .icon{font-size:48px;margin-bottom:8px}
+.element-visual .name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700}
+.element-visual .archetype{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mint);margin-top:2px}
+.element-detail h3{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--ch);margin-bottom:6px}
+.element-detail p{font-size:10.5px;line-height:1.7;color:var(--gr)}
+.trait-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.trait-tag{background:var(--cream);border:1px solid var(--lg);border-radius:12px;padding:3px 10px;font-size:9px;color:var(--ch);font-weight:500}
+
+/* Style DNA grid */
+.style-dna-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.style-dna-item{background:var(--cream);border-radius:6px;padding:12px;display:flex;align-items:flex-start;gap:8px;border:1px solid var(--lg)}
+.style-dna-item .icon{font-size:18px;flex-shrink:0}
+.style-dna-item h4{font-size:10px;font-weight:600;color:var(--em);margin-bottom:3px}
+.style-dna-item p{font-size:9.5px;color:var(--gr);line-height:1.4}
+
+/* Scores table */
+.scores-table{width:100%;border-collapse:collapse;margin-bottom:16px}
+.scores-table th{background:var(--em);color:white;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 10px;text-align:left;font-weight:600}
+.scores-table td{padding:8px 10px;border-bottom:1px solid var(--lg);font-size:10px;color:var(--ch);line-height:1.5}
+.scores-table tr:nth-child(even){background:var(--cream)}
+.scores-table .score-cell{font-weight:600;color:var(--em);text-align:center}
+
+/* Quick wins */
+.quick-win{display:flex;gap:12px;margin-bottom:14px;padding:14px;background:var(--cream);border-radius:6px;border:1px solid var(--lg)}
+.quick-win .num{width:32px;height:32px;background:var(--em);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;flex-shrink:0}
+.quick-win .content h4{font-size:11px;font-weight:600;color:var(--ch);margin-bottom:4px}
+.quick-win .content p{font-size:10px;color:var(--gr);line-height:1.6}
+
+/* Notes section */
+.notes-area{border:1.5px solid var(--lg);border-radius:6px;padding:14px;min-height:100px;background:repeating-linear-gradient(transparent,transparent 24px,var(--lg) 24px,var(--lg) 25px);background-position:0 14px;margin-bottom:14px}
+.notes-area.tall{min-height:160px}
+
+/* Upgrade path */
+.upgrade-path{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.upgrade-card{border:1.5px solid var(--lg);border-radius:8px;padding:14px 10px;text-align:center;background:white}
+.upgrade-card.current{border-color:var(--em);background:linear-gradient(160deg,#f0fbf4,white)}
+.upgrade-card.recommended{border-color:var(--rg);background:linear-gradient(160deg,#fff7f4,white);box-shadow:0 4px 16px rgba(201,149,108,.12)}
+.upgrade-card .tier{font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--rg);font-weight:600}
+.upgrade-card .name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--ch);margin:3px 0}
+.upgrade-card .price{font-size:13px;font-weight:600;color:var(--em);margin-bottom:4px}
+.upgrade-card .desc{font-size:8px;color:var(--gr);line-height:1.4}
+.upgrade-card .badge{background:var(--rg);color:white;font-size:7px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:10px;display:inline-block;margin-top:6px}
+
+/* Check items */
+.check-item{display:flex;align-items:flex-start;gap:6px;font-size:10px;line-height:1.5;color:var(--ch);margin-bottom:4px}
+.check-box{width:12px;height:12px;border:1.5px solid var(--lg);border-radius:2px;flex-shrink:0;margin-top:2px}
+
+/* Divider */
+.divider{border:none;border-top:1.5px solid var(--lg);margin:20px 0}
+
+/* Footer */
+.footer{border-top:2px solid var(--em);padding-top:14px;display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.footer .left{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ch)}
+.footer .left span{color:var(--em)}
+.footer .center{text-align:center;font-size:8px;color:var(--gr);line-height:1.6}
+.footer .right{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;color:var(--rg)}
+
+/* Page break helper */
+.page-break{page-break-before:always}
+
+/* Print styles */
+@media print{
+  body{padding:0;background:white;gap:0}
+  .page{box-shadow:none;width:100%;page-break-after:always}
+  .page-label{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page-label">Page 1 — Cover</div>
+<div class="page cover">
+  <div class="brand-icon">🗝</div>
+  <div class="pkg-name">Keystyle · Elemental Edge™</div>
+  <h1>Your Style<br><span>Element</span><br>Report</h1>
+  <div class="divider-line"></div>
+  <div class="client-label">Prepared For</div>
+  <div class="client-name">[Client Full Name]</div>
+  <div class="date">Session Date: [DD Month YYYY] · Prepared by Flora Leong, Keystyle</div>
+  <div class="footer-cover">Confidential · For Personal Use Only</div>
+  <div class="decorative-ring"></div>
+  <div class="decorative-ring2"></div>
+</div>
+
+<!-- ==================== PAGE 2: YOUR ELEMENT PROFILE ==================== -->
+<div class="page-label">Page 2 — Element Profile</div>
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">Section 1</div>
+    <h2>Your Element Profile</h2>
+  </div>
+
+  <div class="info-box">
+    <div class="label">Your Result</div>
+    <p>Based on your pre-session assessment and our consultation, here is your personal Elemental Edge™ profile — a snapshot of the style energy you naturally embody and the energy you want to amplify.</p>
+  </div>
+
+  <!-- Primary Element -->
+  <div class="sub-heading">Your Primary Element</div>
+  <div class="element-profile">
+    <div class="element-visual">
+      <div class="icon">[🌊/🌿/🔥/🏔️/💎]</div>
+      <div class="name">[Element]</div>
+      <div class="archetype">The [Archetype]</div>
+    </div>
+    <div class="element-detail">
+      <h3>What This Means For You</h3>
+      <p>[Flora fills in a personalised 2-3 sentence description based on the client's element. Example: "You are a natural Contemplator. You bring depth, creativity, and thoughtful reflection to everything you do. Your style energy is calm and introspective — you prefer clothing that feels effortless and doesn't try too hard."]</p>
+      <div class="trait-tags">
+        <span class="trait-tag">[Trait 1]</span>
+        <span class="trait-tag">[Trait 2]</span>
+        <span class="trait-tag">[Trait 3]</span>
+        <span class="trait-tag">[Trait 4]</span>
+        <span class="trait-tag">[Trait 5]</span>
+        <span class="trait-tag">[Trait 6]</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secondary/Intention Element -->
+  <div class="sub-heading">Your Intention Element</div>
+  <div class="element-profile">
+    <div class="element-visual" style="background:var(--rg)">
+      <div class="icon">[🌊/🌿/🔥/🏔️/💎]</div>
+      <div class="name">[Element]</div>
+      <div class="archetype">The [Archetype]</div>
+    </div>
+    <div class="element-detail">
+      <h3>The Energy You Want to Amplify</h3>
+      <p>[Flora fills in based on client's intention results. Example: "Your current goals call for Metal energy — authority, precision, and leadership. This is the element you should lean into when dressing for important meetings, pitches, or networking events."]</p>
+      <div class="trait-tags">
+        <span class="trait-tag">[Trait 1]</span>
+        <span class="trait-tag">[Trait 2]</span>
+        <span class="trait-tag">[Trait 3]</span>
+        <span class="trait-tag">[Trait 4]</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Scores Summary -->
+  <div class="sub-heading">Your Elemental Scores</div>
+  <table class="scores-table">
+    <tr>
+      <th>Element</th>
+      <th>Archetype</th>
+      <th style="text-align:center">Comfort Zone Score</th>
+      <th style="text-align:center">Intention Score</th>
+    </tr>
+    <tr>
+      <td>🌊 Water</td>
+      <td>The Contemplator</td>
+      <td class="score-cell">[__] / 3</td>
+      <td class="score-cell">[__] / 3</td>
+    </tr>
+    <tr>
+      <td>🌿 Wood</td>
+      <td>The Crusader</td>
+      <td class="score-cell">[__] / 3</td>
+      <td class="score-cell">[__] / 3</td>
+    </tr>
+    <tr>
+      <td>🔥 Fire</td>
+      <td>The Captivator</td>
+      <td class="score-cell">[__] / 3</td>
+      <td class="score-cell">[__] / 3</td>
+    </tr>
+    <tr>
+      <td>🏔️ Earth</td>
+      <td>The Caregiver</td>
+      <td class="score-cell">[__] / 3</td>
+      <td class="score-cell">[__] / 3</td>
+    </tr>
+    <tr>
+      <td>💎 Metal</td>
+      <td>The Connoisseur</td>
+      <td class="score-cell">[__] / 3</td>
+      <td class="score-cell">[__] / 3</td>
+    </tr>
+  </table>
+
+  <div class="footer">
+    <div class="left">Key<span>style</span></div>
+    <div class="center">Elemental Edge™ Report · Confidential<br>[Client Name] · [Date]</div>
+    <div class="right">Page 1</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 3: YOUR STYLE DNA ==================== -->
+<div class="page-label">Page 3 — Style DNA</div>
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">Section 2</div>
+    <h2>Your Style DNA</h2>
+  </div>
+
+  <div class="info-box">
+    <div class="label">What to Look For</div>
+    <p>These are the design elements that align with your primary element. When shopping or getting dressed, use these as your compass to make intentional choices.</p>
+  </div>
+
+  <!-- Primary Element Style Guide -->
+  <div class="sub-heading">Primary Element: [Element Name] Design Elements</div>
+  <div class="style-dna-grid">
+    <div class="style-dna-item">
+      <div class="icon">🎨</div>
+      <div>
+        <h4>Colours</h4>
+        <p>[Flora fills in — e.g., "Dark tones: navy, black, charcoal, deep blue, indigo"]</p>
+      </div>
+    </div>
+    <div class="style-dna-item">
+      <div class="icon">🔲</div>
+      <div>
+        <h4>Patterns</h4>
+        <p>[Flora fills in — e.g., "Abstract, asymmetric, watercolour-effect, freeform"]</p>
+      </div>
+    </div>
+    <div class="style-dna-item">
+      <div class="icon">🧵</div>
+      <div>
+        <h4>Fabrics</h4>
+        <p>[Flora fills in — e.g., "Fluid, jersey, soft draping, sheer materials"]</p>
+      </div>
+    </div>
+    <div class="style-dna-item">
+      <div class="icon">📐</div>
+      <div>
+        <h4>Shapes & Silhouettes</h4>
+        <p>[Flora fills in — e.g., "Flowing, relaxed, unstructured, asymmetric cuts"]</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intention Element Style Guide -->
+  <div class="sub-heading">Intention Element: [Element Name] Design Elements</div>
+  <div class="style-dna-grid">
+    <div class="style-dna-item">
+      <div class="icon">🎨</div>
+      <div>
+        <h4>Colours to Introduce</h4>
+        <p>[Flora fills in — e.g., "White, pastels, silver, metallic accents"]</p>
+      </div>
+    </div>
+    <div class="style-dna-item">
+      <div class="icon">🔲</div>
+      <div>
+        <h4>Patterns to Try</h4>
+        <p>[Flora fills in — e.g., "Polka dots, round motifs, minimal geometric"]</p>
+      </div>
+    </div>
+    <div class="style-dna-item">
+      <div class="icon">🧵</div>
+      <div>
+        <h4>Fabrics to Explore</h4>
+        <p>[Flora fills in — e.g., "Premium wool, silk blend, cashmere"]</p>
+      </div>
+    </div>
+    <div class="style-dna-item">
+      <div class="icon">📐</div>
+      <div>
+        <h4>Shapes to Incorporate</h4>
+        <p>[Flora fills in — e.g., "Tailored, curved, sculpted silhouettes"]</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Flora's Image Assessment Notes -->
+  <div class="sub-heading">Flora's Image Assessment Notes</div>
+  <div class="info-box warm">
+    <div class="label">Current Style Assessment</div>
+    <p style="font-style:italic;color:var(--gr)">Flora's personalised observations based on the client's submitted photos and in-session discussion:</p>
+  </div>
+
+  <div class="two-col">
+    <div class="field-group">
+      <div class="field-label">What's Working Well</div>
+      <div class="field-box tall"></div>
+    </div>
+    <div class="field-group">
+      <div class="field-label">Opportunities for Improvement</div>
+      <div class="field-box tall"></div>
+    </div>
+  </div>
+
+  <div class="field-group">
+    <div class="field-label">Overall Image Assessment Summary</div>
+    <div class="field-box"></div>
+  </div>
+
+  <div class="footer">
+    <div class="left">Key<span>style</span></div>
+    <div class="center">Elemental Edge™ Report · Confidential<br>[Client Name] · [Date]</div>
+    <div class="right">Page 2</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 4: QUICK WINS & ACTION PLAN ==================== -->
+<div class="page-label">Page 4 — Quick Wins & Action Plan</div>
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">Section 3</div>
+    <h2>Your 3 Quick Wins</h2>
+  </div>
+
+  <div class="info-box">
+    <div class="label">Immediate Actions</div>
+    <p>These are 3 specific, easy-to-implement changes you can make <strong>this week</strong> to start aligning your wardrobe with your elemental energy and intentions.</p>
+  </div>
+
+  <div class="quick-win">
+    <div class="num">1</div>
+    <div class="content">
+      <h4>[Quick Win Title — Flora fills in]</h4>
+      <p>[Specific, actionable recommendation. Example: "Add one structured navy blazer to your daily rotation. Water energy thrives in dark, fluid pieces — a well-fitted navy blazer bridges your contemplative nature with professional authority."]</p>
+      <div class="field-group" style="margin-top:8px">
+        <div class="field-label">Flora's Note</div>
+        <div class="field-box" style="min-height:40px"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quick-win">
+    <div class="num">2</div>
+    <div class="content">
+      <h4>[Quick Win Title — Flora fills in]</h4>
+      <p>[Specific, actionable recommendation. Example: "Swap your rectangular watch for a round-face timepiece. Metal element accessories signal refinement and authority — perfect for your intention to lead."]</p>
+      <div class="field-group" style="margin-top:8px">
+        <div class="field-label">Flora's Note</div>
+        <div class="field-box" style="min-height:40px"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quick-win">
+    <div class="num">3</div>
+    <div class="content">
+      <h4>[Quick Win Title — Flora fills in]</h4>
+      <p>[Specific, actionable recommendation. Example: "For your next networking event, wear a deep green pocket square or tie to activate your Wood Crusader energy — the energy of growth, ambition, and decisive action."]</p>
+      <div class="field-group" style="margin-top:8px">
+        <div class="field-label">Flora's Note</div>
+        <div class="field-box" style="min-height:40px"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Intention Alignment Checklist -->
+  <div class="sub-heading">Intention Alignment Checklist</div>
+  <p style="font-size:10px;color:var(--gr);margin-bottom:10px">Before you walk out the door, ask yourself:</p>
+
+  <div class="two-col">
+    <div>
+      <div class="check-item"><div class="check-box"></div> Does my outfit reflect my primary element's energy?</div>
+      <div class="check-item"><div class="check-box"></div> Am I wearing at least one item that supports my intention?</div>
+      <div class="check-item"><div class="check-box"></div> Do the colours I'm wearing align with my goals for today?</div>
+    </div>
+    <div>
+      <div class="check-item"><div class="check-box"></div> Does this outfit make me feel confident and intentional?</div>
+      <div class="check-item"><div class="check-box"></div> Would someone perceive me the way I WANT to be perceived?</div>
+      <div class="check-item"><div class="check-box"></div> Am I visually affirming my intentions?</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="left">Key<span>style</span></div>
+    <div class="center">Elemental Edge™ Report · Confidential<br>[Client Name] · [Date]</div>
+    <div class="right">Page 3</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 5: FLORA'S PERSONAL NOTES ==================== -->
+<div class="page-label">Page 5 — Flora's Session Notes</div>
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">Section 4</div>
+    <h2>Flora's Session Notes & Pointers</h2>
+  </div>
+
+  <div class="info-box warm">
+    <div class="label">Personalised Notes from Your Session</div>
+    <p>These are my personal observations and recommendations from our 45-minute consultation. Refer to these notes as you start making intentional style choices.</p>
+  </div>
+
+  <!-- Overall Observations -->
+  <div class="field-group">
+    <div class="field-label">Overall Observations</div>
+    <div class="notes-area tall"></div>
+  </div>
+
+  <!-- Specific Recommendations -->
+  <div class="two-col">
+    <div class="field-group">
+      <div class="field-label">Colours to Add to Your Wardrobe</div>
+      <div class="notes-area"></div>
+    </div>
+    <div class="field-group">
+      <div class="field-label">Colours to Phase Out</div>
+      <div class="notes-area"></div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="field-group">
+      <div class="field-label">Key Pieces to Invest In</div>
+      <div class="notes-area"></div>
+    </div>
+    <div class="field-group">
+      <div class="field-label">Items to Let Go Of</div>
+      <div class="notes-area"></div>
+    </div>
+  </div>
+
+  <div class="field-group">
+    <div class="field-label">Accessories & Details</div>
+    <div class="notes-area"></div>
+  </div>
+
+  <div class="field-group">
+    <div class="field-label">Grooming Suggestions</div>
+    <div class="notes-area"></div>
+  </div>
+
+  <div class="footer">
+    <div class="left">Key<span>style</span></div>
+    <div class="center">Elemental Edge™ Report · Confidential<br>[Client Name] · [Date]</div>
+    <div class="right">Page 4</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 6: ADDITIONAL NOTES & WARDROBE ROADMAP ==================== -->
+<div class="page-label">Page 6 — Additional Notes & Wardrobe Roadmap</div>
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">Section 5</div>
+    <h2>Your Style Confidence Snapshot</h2>
+  </div>
+
+  <!-- Confidence scores recap -->
+  <div class="info-box">
+    <div class="label">Your Self-Assessment Results</div>
+    <p>Here's how you rated your style confidence during the assessment. These scores will serve as your baseline — watch how they shift after implementing your Quick Wins!</p>
+  </div>
+
+  <table class="scores-table">
+    <tr>
+      <th style="width:60%">Statement</th>
+      <th style="width:20%;text-align:center">Your Score (1-5)</th>
+      <th style="width:20%;text-align:center">Flora's Target</th>
+    </tr>
+    <tr>
+      <td>I know what colours suit me best</td>
+      <td class="score-cell">[__]</td>
+      <td class="score-cell" style="color:var(--rg)">[__]</td>
+    </tr>
+    <tr>
+      <td>I feel confident choosing outfits for important events</td>
+      <td class="score-cell">[__]</td>
+      <td class="score-cell" style="color:var(--rg)">[__]</td>
+    </tr>
+    <tr>
+      <td>My wardrobe reflects who I am today</td>
+      <td class="score-cell">[__]</td>
+      <td class="score-cell" style="color:var(--rg)">[__]</td>
+    </tr>
+    <tr>
+      <td>I dress with intention, not just convenience</td>
+      <td class="score-cell">[__]</td>
+      <td class="score-cell" style="color:var(--rg)">[__]</td>
+    </tr>
+    <tr>
+      <td>People perceive me the way I want to be perceived</td>
+      <td class="score-cell">[__]</td>
+      <td class="score-cell" style="color:var(--rg)">[__]</td>
+    </tr>
+    <tr>
+      <td>I understand my personal brand</td>
+      <td class="score-cell">[__]</td>
+      <td class="score-cell" style="color:var(--rg)">[__]</td>
+    </tr>
+  </table>
+
+  <div class="field-group">
+    <div class="field-label">Flora's Confidence Assessment Notes</div>
+    <div class="notes-area"></div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Additional free notes -->
+  <div class="sub-heading">Additional Pointers & Notes</div>
+  <div class="notes-area tall"></div>
+
+  <div class="footer">
+    <div class="left">Key<span>style</span></div>
+    <div class="center">Elemental Edge™ Report · Confidential<br>[Client Name] · [Date]</div>
+    <div class="right">Page 5</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 7: WHAT'S NEXT ==================== -->
+<div class="page-label">Page 7 — What's Next (Upsell)</div>
+<div class="page">
+  <div class="section-header">
+    <div class="section-num">Section 6</div>
+    <h2>What's Next? Your Transformation Journey</h2>
+  </div>
+
+  <div class="info-box warm">
+    <div class="label">You've Unlocked Your Element — Now Imagine Going Deeper</div>
+    <p>Today you discovered your elemental style DNA. But this is just the beginning. A full Keystyle transformation takes your entire image — wardrobe, grooming, presence, and personal brand — to a level that commands attention and opens doors.</p>
+  </div>
+
+  <!-- Upgrade Path -->
+  <div class="sub-heading">Your Upgrade Options</div>
+  <div class="upgrade-path">
+    <div class="upgrade-card current">
+      <div class="tier">You Are Here</div>
+      <div class="name" style="font-size:14px">Elemental Edge™</div>
+      <div class="price" style="font-size:11px">$89</div>
+      <div class="desc">45-min snapshot<br>Element discovery<br>3 quick wins</div>
+      <div class="badge" style="background:var(--em)">✓ Completed</div>
+    </div>
+    <div class="upgrade-card recommended">
+      <div class="tier">Recommended</div>
+      <div class="name">Spark</div>
+      <div class="price">$497</div>
+      <div class="desc">1–2 Weeks<br>Full colour analysis<br>Style Blueprint PDF<br>Wardrobe photo review</div>
+      <div class="badge">Most Popular Next Step</div>
+    </div>
+    <div class="upgrade-card">
+      <div class="tier">Tier 2</div>
+      <div class="name">Signature</div>
+      <div class="price">$1,297</div>
+      <div class="desc">3–4 Weeks<br>In-person wardrobe audit<br>Personal shopping trip<br>Signature Lookbook</div>
+    </div>
+    <div class="upgrade-card">
+      <div class="tier">Tier 3+</div>
+      <div class="name">Supreme<br>&amp; Beyond</div>
+      <div class="price">$2,497+</div>
+      <div class="desc">6–12 Weeks<br>Total transformation<br>Brand narrative<br>Executive presence</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="margin-top:14px">
+    <div class="label">Special Offer for Elemental Edge™ Clients</div>
+    <p><strong>Your $89 session fee is fully credited</strong> towards any Keystyle transformation package when you upgrade within 14 days of your session. That means today's session was effectively <strong>free</strong> when you take the next step.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Call to Action -->
+  <div style="text-align:center;padding:20px 40px">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--ch);margin-bottom:8px">Ready to <span style="color:var(--em)">Level Up</span>?</div>
+    <p style="font-size:11px;color:var(--gr);line-height:1.7;max-width:480px;margin:0 auto 14px">Book a complimentary 15-minute discovery call with Flora to discuss which transformation package is right for your goals.</p>
+    <div style="display:inline-block;background:var(--em);color:white;padding:10px 28px;border-radius:4px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600">Book Your Discovery Call</div>
+    <p style="font-size:9px;color:var(--gr);margin-top:10px">flora@keystyle.sg · WhatsApp: [number] · keystyle.sg</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Testimonial placeholder -->
+  <div style="background:linear-gradient(135deg,var(--em),#1B4332);border-radius:8px;padding:18px 24px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-14px;left:14px;font-family:'Cormorant Garamond',serif;font-size:100px;color:rgba(255,255,255,.05);line-height:1">"</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:white;line-height:1.7;position:relative">[Client testimonial placeholder — Flora can add a relevant past client testimonial here]</p>
+    <div style="font-family:Inter,sans-serif;font-size:8px;color:var(--mint);letter-spacing:2px;text-transform:uppercase;margin-top:8px">— [Client Name], [Role/Company]</div>
+  </div>
+
+  <div class="footer">
+    <div class="left">Key<span>style</span></div>
+    <div class="center">Elemental Edge™ Report · Confidential<br>[Client Name] · [Date]</div>
+    <div class="right">Page 6</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 8: CLOSING & THANK YOU ==================== -->
+<div class="page-label">Page 8 — Closing</div>
+<div class="page cover" style="min-height:500px;padding:50px">
+  <div class="brand-icon">🗝</div>
+  <div class="pkg-name" style="margin-bottom:16px">Thank You</div>
+  <h1 style="font-size:40px">Your Style Journey<br><span>Starts Now</span></h1>
+  <div class="divider-line"></div>
+  <p style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8;max-width:420px;text-align:center">Thank you for trusting Keystyle with your Elemental Edge™ session. Remember: every time you get dressed, you have the opportunity to amplify your energy, affirm your intentions, and step into the best version of yourself.</p>
+  <div style="margin-top:24px;font-size:11px;color:var(--mint);letter-spacing:1px;line-height:1.8">
+    Flora Leong<br>
+    Lifestyle Image Transformation Coach<br>
+    Keystyle · keystyle.sg
+  </div>
+  <div class="footer-cover">Level Up Your Look. Level Up Your Life.</div>
+  <div class="decorative-ring"></div>
+  <div class="decorative-ring2"></div>
+</div>
+
+</body>
+</html>
