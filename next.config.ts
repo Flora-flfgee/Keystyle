@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     ],
   },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  async rewrites() { return [{ source: "/121bio", destination: "/121bio_4.html" }]; },
 };
 
 const withMDX = createMDX({
